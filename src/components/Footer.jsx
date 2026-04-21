@@ -36,7 +36,7 @@ const Footer = () => {
         </h2>
       </div>
 
-      <div className="max-w-[1440px] mx-auto relative z-10 border-x border-white/10">
+      <div className="max-w-8xl mx-auto relative z-10 border-x border-white/10">
         
         {/* TOP SECTION */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12">

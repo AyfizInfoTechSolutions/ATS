@@ -14,6 +14,9 @@ import {
 import HeroLanding from "./HeroLanding";
 import LatestNews from "./Home/LatestNews";
 import Testimonials from "./Home/Testinomial";
+import InteractiveServices from "./Home/InteractiveServices";
+import WorkProcessAwesome from "./Home/WorkProcessAwesome";
+import HeroLandingElite from "./Home/HeroLandingElite";
 
 const HomePage = () => {
     const container = {
@@ -63,6 +66,7 @@ const HomePage = () => {
     const [openFaq, setOpenFaq] = useState(0);
     return (
         <main className="bg-white min-h-screen pt-20 overflow-hidden">
+         
             <HeroLanding />
 
             <section className="relative max-w-8xl mx-auto border-x border-gray-100 bg-white overflow-hidden">
@@ -206,175 +210,11 @@ const HomePage = () => {
                     </div>
                 </motion.div>
             </section>
-            {/* --- OUR SERVICES: THE GRID BLUEPRINT --- */}
-            <section className="max-w-[1440px] mx-auto border-x border-gray-100 py-32 bg-brand-dark text-white relative">
-                {/* Subtle Side Label */}
-                <div className="absolute left-6 top-1/2 -translate-y-1/2 -rotate-90 hidden lg:block">
-                    <span className="text-[10px] font-black uppercase tracking-[1em] text-white/10 whitespace-nowrap">
-                        CORE CAPABILITIES
-                    </span>
-                </div>
+            <InteractiveServices />
 
-                <div className="px-10 lg:px-20 mb-20 text-center lg:text-left">
-                    <p className="text-brand-accent font-black uppercase tracking-[0.4em] text-[10px] mb-4">
-            // Expert Solutions
-                    </p>
-                    <h2 className="text-6xl font-bold uppercase tracking-tighter">
-                        OUR{" "}
-                        <span className="text-brand-primary italic">
-                            PROVIDED SERVICES.
-                        </span>
-                    </h2>
-                </div>
+            <WorkProcessAwesome />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-white/10">
-                    {[
-                        {
-                            title: "Trade Services",
-                            desc: "International Trade Services facilitate global business by providing expertise in import/export, logistics, and compliance.",
-                        },
-                        {
-                            title: "International Broking",
-                            desc: "Facilitating financial transactions, such as buying and selling assets, between parties across global markets.",
-                        },
-                        {
-                            title: "Business Consulting",
-                            desc: "Guidance to companies expanding internationally, providing market insights, strategies, and compliance support.",
-                        },
-                        {
-                            title: "Sourcing Services",
-                            desc: "Finding, evaluating, and securing suppliers or products to meet your procurement needs.",
-                        },
-                        {
-                            title: "Warehouse & Distro",
-                            desc: "Storing goods efficiently and managing their movement to ensure timely delivery to customers.",
-                        },
-                        {
-                            title: "Exports & Imports",
-                            desc: "Your trusted partner in global trade, specializing in UAE, KSA, India, and the UK regions.",
-                        },
-                    ].map((service, idx) => (
-                        <div
-                            key={idx}
-                            className="p-12 border-r border-b border-white/10 hover:bg-brand-accent transition-all duration-500 group cursor-pointer relative overflow-hidden"
-                        >
-                            {/* Animated number background */}
-                            <span className="absolute top-10 right-10 text-5xl font-black text-white/5 group-hover:text-white/20 transition-colors">
-                                0{idx + 1}
-                            </span>
-
-                            <div className="w-10 h-1 bg-brand-accent group-hover:bg-white mb-8 transition-colors" />
-
-                            <h4 className="text-2xl font-bold uppercase tracking-tighter mb-6 group-hover:text-white">
-                                {service.title}
-                            </h4>
-                            <p className="text-sm text-slate-400 font-medium leading-relaxed group-hover:text-white/80 transition-colors">
-                                {service.desc}
-                            </p>
-
-                            <div className="mt-10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2 text-[10px] font-black uppercase tracking-widest">
-                                Learn More <span className="text-lg">→</span>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* --- OUR WORK PROCESS: THE EXECUTION BLUEPRINT --- */}
-            <section className="max-w-[1440px] mx-auto border-x border-gray-100 py-32 bg-brand-dark text-white relative overflow-hidden">
-                {/* BACKGROUND LARGE TEXT - Matches the 'AYFIZ' watermark style */}
-                <div className="absolute top-0 right-0 p-10 opacity-[0.03] font-black text-[250px] leading-none select-none pointer-events-none translate-x-20 -translate-y-10">
-                    FLOW
-                </div>
-
-                <div className="px-10 lg:px-20 relative z-10">
-                    <div className="mb-24 grid grid-cols-1 lg:grid-cols-2 items-end gap-10">
-                        <div>
-                            <motion.p
-                                initial={{ opacity: 0, x: -10 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                className="text-brand-accent font-black uppercase tracking-[0.4em] text-[10px] mb-6 flex items-center gap-3"
-                            >
-                                <span className="w-8 h-[1px] bg-brand-accent" /> // System
-                                Methodology
-                            </motion.p>
-                            <h2 className="text-6xl font-bold uppercase tracking-tighter leading-none">
-                                How We <br />
-                                <span className="text-brand-primary italic">
-                                    Deliver Value.
-                                </span>
-                            </h2>
-                        </div>
-                        <div className="lg:pb-4">
-                            <p className="text-slate-400 text-sm uppercase tracking-widest leading-loose max-w-md border-l border-white/10 pl-8">
-                                A structured approach to global logistics ensuring precision at
-                                every node of the supply chain.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* THE GRID: Matches the Service Grid spacing exactly */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 border border-white/10">
-                        {[
-                            {
-                                id: "01",
-                                title: "Research & Planning",
-                                desc: "Thorough market research to identify trends and strategic opportunities tailored to your vertical.",
-                            },
-                            {
-                                id: "02",
-                                title: "Review & Launch",
-                                desc: "Final adjustments based on multi-channel feedback to ensure a polished, risk-free execution.",
-                            },
-                            {
-                                id: "03",
-                                title: "Implementation",
-                                desc: "Executing the plan with high-efficiency resource allocation and constant performance monitoring.",
-                            },
-                        ].map((step, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: idx * 0.2 }}
-                                className="p-12 lg:p-16 border-r border-white/10 last:border-r-0 hover:bg-white/[0.02] transition-all group relative cursor-default"
-                            >
-                                {/* TOP ACCENT LINE - Animates on hover to orange */}
-                                <div className="absolute top-0 left-0 w-full h-[2px] bg-white/5 group-hover:bg-brand-accent transition-colors duration-500" />
-
-                                {/* STEP NUMBER - Editorial Style */}
-                                <div className="flex justify-between items-start mb-12">
-                                    <span
-                                        className="text-5xl font-black text-transparent stroke-text group-hover:text-brand-accent transition-all duration-700"
-                                        style={{ WebkitTextStroke: "1px rgba(255,255,255,0.1)" }}
-                                    >
-                                        {step.id}
-                                    </span>
-                                    <div className="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center group-hover:border-brand-accent transition-colors">
-                                        <div className="w-1.5 h-1.5 bg-brand-accent rounded-full animate-pulse" />
-                                    </div>
-                                </div>
-
-                                <h4 className="text-2xl font-bold uppercase tracking-tighter mb-6 group-hover:translate-x-2 transition-transform duration-300">
-                                    {step.title}
-                                </h4>
-
-                                <p className="text-slate-400 text-sm leading-relaxed font-medium">
-                                    {step.desc}
-                                </p>
-
-                                {/* BOTTOM DECORATIVE ELEMENT */}
-                                <div className="mt-12 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <div className="w-1 h-1 bg-brand-accent" />
-                                    <div className="w-4 h-1 bg-brand-accent/30" />
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <section className="max-w-[1440px] mx-auto border-x border-gray-100 py-24 bg-white">
+            <section className="max-w-8xl mx-auto border-x border-gray-100 py-24 bg-white">
                 <div className="px-10 lg:px-20 mb-16 flex justify-between items-end">
                     <div>
                         <p className="text-brand-accent font-black uppercase tracking-[0.4em] text-[10px] mb-4">
@@ -433,7 +273,7 @@ const HomePage = () => {
             </section>
 
             {/* --- FAQ & SUPPORT SECTION --- */}
-            <section className="max-w-[1440px] mx-auto border-x border-gray-100 grid grid-cols-1 lg:grid-cols-2">
+            <section className="max-w-8xl mx-auto border-x border-gray-100 grid grid-cols-1 lg:grid-cols-2">
                 <div className="p-10 lg:p-20 border-r border-gray-100">
                     <p className="text-brand-primary font-black uppercase tracking-[0.4em] text-[10px] mb-4">
             // Help Center
@@ -506,7 +346,7 @@ const HomePage = () => {
             </section>
 
             {/* --- TECHNICAL STATS SECTION --- */}
-            <section className="max-w-[1440px] mx-auto border-x border-gray-100 bg-brand-dark text-white">
+            <section className="max-w-8xl mx-auto border-x border-gray-100 bg-brand-dark text-white">
                 <div className="grid grid-cols-2 lg:grid-cols-4">
                     {[
                         { label: "Project Completed", value: "1224", icon: "🚀" },

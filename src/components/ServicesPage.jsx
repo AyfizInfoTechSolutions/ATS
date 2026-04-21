@@ -120,7 +120,7 @@ const ServicesPage = () => {
 
       {/* Trust Bar */}
       <div className="bg-brand-dark py-16 text-white border-t border-gray-800">
-        <div className="max-w-[1440px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12">
+        <div className="max-w-8xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12">
           {[
             { label: "Instant Growth", status: "Enabled" },
             { label: "Expert Team", status: "Active" },

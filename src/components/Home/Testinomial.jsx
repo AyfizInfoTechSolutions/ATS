@@ -1,116 +1,161 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 const Testimonials = () => {
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(0); // 1 for right, -1 for left
+
   const feedback = [
     {
       name: "Mostfa Kalarod",
       company: "ERD Improvers, Tanzania",
       text: "Mychus Interfurn has been instrumental in our global expansion. Their expert consultancy and efficient trade solutions streamlined our import/export processes.",
-      img: "https://via.placeholder.com/150", // Replace with image_9dc20c.png face 1
+      img: "https://i.pravatar.cc/150?u=mostfa",
     },
     {
       name: "Andreas Hugi",
       company: "Swiss Refines",
       text: "Working with Mychus Interfurn has been a pleasure. Their knowledge of customs regulations and proactive approach have saved us time and money.",
-      img: "https://via.placeholder.com/150", // Replace with image_9dc20c.png face 2
+      img: "https://i.pravatar.cc/150?u=andreas",
+    },
+    {
+      name: "Zayd bin Malik",
+      company: "Gulf Logistics",
+      text: "Their precision in handling documentation for the UAE market is unmatched. A true partner in modern trade.",
+      img: "https://i.pravatar.cc/150?u=zayd",
     },
   ];
 
+  const nextStep = () => {
+    setDirection(1);
+    setIndex((prev) => (prev + 1) % feedback.length);
+  };
+
+  const prevStep = () => {
+    setDirection(-1);
+    setIndex((prev) => (prev - 1 + feedback.length) % feedback.length);
+  };
+
+  // Animation variants for the sliding effect
+  const variants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 100 : -100,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction) => ({
+      x: direction < 0 ? 100 : -100,
+      opacity: 0,
+    }),
+  };
+
   return (
-    <section className="max-w-8xl mx-auto border-x border-gray-100 pt-16 bg-white relative overflow-hidden">
+    <section className="max-w-8xl mx-auto border-x border-gray-100 pt-32  bg-white relative overflow-hidden">
       
-      {/* BACKGROUND DECORATION - Vertical Text */}
-      <div className="absolute top-0 right-0 h-full flex items-center pointer-events-none opacity-[0.02] select-none">
-        <span className="text-[20vh] font-black uppercase tracking-tighter rotate-90 origin-bottom-right translate-x-20">
-          RELIABILITY
-        </span>
+      {/* BACKGROUND DECOR */}
+      <div className="absolute inset-0 grid grid-cols-12 pointer-events-none opacity-[0.03]">
+        {[...Array(12)].map((_, i) => (
+          <div key={i} className="border-r border-gray-900 h-full" />
+        ))}
       </div>
 
-      <div className="px-10 lg:px-20 grid grid-cols-1 lg:grid-cols-12 gap-16 relative z-10">
+      <div className="px-10 lg:px-20 relative z-10">
         
-        {/* Left Side: Strategic Heading */}
-        <div className="lg:col-span-4 flex flex-col justify-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-4 mb-8"
-          >
-            <span className="w-12 h-[2px] bg-brand-accent"></span>
-            <span className="text-brand-accent font-black uppercase tracking-[0.4em] text-[10px]">
-              Verified Partnerships
-            </span>
-          </motion.div>
-          
-          <h2 className="text-6xl md:text-7xl font-bold uppercase tracking-tighter leading-[0.85] text-brand-dark mb-10">
-            WHAT PEOPLE <br /> 
-            <span className="text-brand-primary italic">SAY.</span>
-          </h2>
-          
-          <div className="relative p-8 bg-gray-50 border-r-4 border-brand-accent group">
-            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-500 leading-relaxed">
-              Trusted by global trade partners across <span className="text-brand-dark">4 continents</span> and <span className="text-brand-dark">12+ industrial sectors</span>.
-            </p>
-            {/* Architectural corner detail */}
-            <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-brand-accent/20" />
+        {/* HEADER & NAV */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+          <div>
+            <div className="flex items-center gap-4 mb-8">
+              <span className="w-20 h-[1px] bg-brand-accent"></span>
+              <span className="text-brand-accent font-black uppercase tracking-[0.6em] text-[10px]">
+                Global Endorsements
+              </span>
+            </div>
+            <h2 className="text-6xl  font-bold uppercase tracking-tighter leading-[0.8] text-brand-dark">
+              VOICES OF <br /> 
+              <span className="text-brand-primary italic">CONVICTION.</span>
+            </h2>
+          </div>
+
+          {/* CUSTOM NAVIGATION */}
+          <div className="flex gap-4">
+            <button 
+              onClick={prevStep}
+              className="w-16 h-16 border border-gray-200 flex items-center justify-center hover:bg-brand-dark hover:text-white transition-all group"
+            >
+              <FiChevronLeft className="text-2xl group-hover:-translate-x-1 transition-transform" />
+            </button>
+            <button 
+              onClick={nextStep}
+              className="w-16 h-16 bg-brand-dark text-white flex items-center justify-center hover:bg-brand-primary transition-all group"
+            >
+              <FiChevronRight className="text-2xl group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
         </div>
 
-        {/* Right Side: High-End Testimonial Cards */}
-        <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-0 border border-gray-100">
-          {feedback.map((item, idx) => (
+        {/* CAROUSEL AREA */}
+        <div className="relative h-[500px] md:h-[400px]">
+          <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.2 }}
-              className="p-12 border-r border-gray-100 last:border-r-0 hover:bg-gray-50/30 transition-all duration-700 group relative"
+              key={index}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-0 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
             >
-              {/* Top Accent Line */}
-              <div className="absolute top-0 left-0 w-0 h-[2px] bg-brand-accent group-hover:w-full transition-all duration-700" />
-              
-              {/* Star Rating - Technical Style */}
-              <div className="flex gap-1 mb-10">
-                {[...Array(5)].map((_, i) => (
-                  <div key={i} className="w-2 h-2 bg-brand-accent/20 group-hover:bg-brand-accent transition-colors rotate-45" />
-                ))}
-              </div>
-
-              <div className="relative">
-                <span className="absolute -top-6 -left-4 text-6xl font-black text-gray-100 select-none group-hover:text-brand-accent/10 transition-colors">
-                  “
-                </span>
-                <p className="text-gray-500 font-medium leading-relaxed mb-12 relative z-10 italic">
-                  {item.text}
-                </p>
-              </div>
-
-              <div className="flex items-center gap-6">
-                <div className="relative">
-                  {/* Portrait with Frame Effect */}
-                  <div className="absolute -inset-2 border border-brand-accent/0 group-hover:border-brand-accent/10 transition-all rounded-full" />
-                  <img
-                    src={item.img}
-                    className="w-16 h-16 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ring-4 ring-white"
-                    alt={item.name}
-                  />
+              {/* Quote Content */}
+              <div className="lg:col-span-8">
+                <div className="mb-1 text-brand-accent">
+                   <span className="text-6xl font-serif">“</span>
                 </div>
-                <div>
-                  <h4 className="font-black uppercase tracking-tighter text-brand-dark text-lg leading-none mb-2">
-                    {item.name}
+                <blockquote className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-brand-dark leading-tight italic">
+                  {feedback[index].text}
+                </blockquote>
+              </div>
+
+              {/* Author Info */}
+              <div className="lg:col-span-4 flex lg:flex-col items-center lg:items-end gap-6 text-right">
+                <div className="relative w-32 h-32 md:w-40 md:h-40 overflow-hidden border-8 border-gray-50 shadow-xl">
+                  <img
+                    src={feedback[index].img}
+                    className="w-full h-full object-cover"
+                    alt={feedback[index].name}
+                  />
+                  <div className="absolute inset-0 bg-brand-primary/10 mix-blend-multiply" />
+                </div>
+                <div className="text-right">
+                  <h4 className="font-black uppercase tracking-tighter text-brand-dark text-2xl leading-none mb-2">
+                    {feedback[index].name}
                   </h4>
-                  <p className="text-[9px] font-black text-brand-accent uppercase tracking-widest">
-                    // {item.company}
+                  <p className="text-xs font-black text-brand-accent uppercase tracking-[0.2em]">
+                    // {feedback[index].company}
                   </p>
                 </div>
               </div>
-
-              {/* Decorative ID Number */}
-              <span className="absolute bottom-6 right-8 text-[10px] font-black text-gray-200 uppercase tracking-widest">
-                REF_0{idx + 1}
-              </span>
             </motion.div>
-          ))}
+          </AnimatePresence>
+        </div>
+
+        {/* TECHNICAL PROGRESS BAR */}
+        <div className="mt-24 border-t border-gray-100 pt-10 flex items-center justify-between">
+          <div className="flex gap-2">
+            {feedback.map((_, i) => (
+              <div 
+                key={i} 
+                className={`h-1 transition-all duration-500 ${i === index ? 'w-12 bg-brand-accent' : 'w-4 bg-gray-200'}`} 
+              />
+            ))}
+          </div>
+          <span className="font-mono text-[10px] text-gray-400 tracking-widest uppercase">
+            System_Status: Operational // Data_Set: 0{index + 1}
+          </span>
         </div>
       </div>
     </section>

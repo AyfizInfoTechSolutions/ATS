@@ -43,7 +43,7 @@ const AboutPage = () => {
       </section>
 
       {/* SECTION 2: INDUSTRIAL CONTENT & VISUALS */}
-      <section className="max-w-[1440px] mx-auto border-x border-gray-100">
+      <section className="max-w-[1440px]  mx-auto border-x border-gray-100">
         <div className="grid grid-cols-1 lg:grid-cols-12">
           
           {/* Left Side: Editorial Content */}
@@ -142,7 +142,7 @@ const AboutPage = () => {
 
       {/* SECTION 4: GLOBAL STATS BAR */}
       <div className="bg-gray-50 py-16 border-b border-gray-200">
-        <div className="max-w-[1440px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12">
+        <div className="max-w-8xl mx-auto px-6 flex justify-between px-16">
           {[
             { label: "Active Nodes", val: "150+" },
             { label: "Countries Served", val: "42" },

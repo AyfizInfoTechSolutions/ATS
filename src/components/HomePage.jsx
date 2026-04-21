@@ -11,12 +11,11 @@ import {
     FiSearch,
     FiTruck,
 } from "react-icons/fi";
-import HeroLanding from "./HeroLanding";
 import LatestNews from "./Home/LatestNews";
 import Testimonials from "./Home/Testinomial";
 import InteractiveServices from "./Home/InteractiveServices";
 import WorkProcessAwesome from "./Home/WorkProcessAwesome";
-import HeroLandingElite from "./Home/HeroLandingElite";
+import HeroLanding from "./Home/HeroLanding";
 
 const HomePage = () => {
     const container = {

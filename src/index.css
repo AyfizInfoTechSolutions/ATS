@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  /* Primary Logistics Blue */
+  --color-brand-primary: #1783ff;
+  
+  /* Deep Jet Black for Text & Footers */
+  --color-brand-dark: #151a1f;
+  
+  /* High-Contrast Action Orange */
+  --color-brand-accent: #ff6235;
+
+  /* Optional: Light variant for backgrounds */
+  --color-brand-soft: #f4f9ff;
+}

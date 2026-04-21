@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FiArrowUpRight, FiPlay, FiGlobe } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-
+import bgVideo from "../../assets/bg-abs.mp4";
 const HeroLanding = () => {
   const { scrollY } = useScroll();
   
@@ -118,10 +118,7 @@ const HeroLanding = () => {
                 playsInline
                 className="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 ease-in-out"
               >
-                <source 
-                  src="https://assets.mixkit.co/videos/preview/mixkit-cargo-ship-in-the-port-of-a-city-at-night-25032-large.mp4" 
-                  type="video/mp4" 
-                />
+                 <source src={bgVideo} type="video/mp4" />
               </motion.video>
               
               {/* Overlay for glass effect */}

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import bgVideo from "../../assets/bg-abs.mp4"; // Import your video
+import bgVideo from "../../assets/banner.mp4"; // Import your video
 
 const PageBanner = ({ title = "Page Title", path = "Home" }) => {
   const { scrollY } = useScroll();

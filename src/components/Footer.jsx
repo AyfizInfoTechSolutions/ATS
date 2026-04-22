@@ -149,7 +149,7 @@ const Footer = () => {
         <div className="border-t border-white/10 p-10 flex flex-col lg:flex-row justify-between items-center gap-8 bg-[#0a0a0a]">
           <div className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
             © {currentYear}{" "}
-            <span className="text-white">Ayfiz Absolutes</span>{" "}
+            <span className="text-white">Ayfiz Trading System</span>{" "}
             <span className="text-brand-accent mx-2">//</span> Crafted for Excellence.
           </div>
 

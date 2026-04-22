@@ -16,6 +16,9 @@ import Testimonials from "./Home/Testinomial";
 import InteractiveServices from "./Home/InteractiveServices";
 import WorkProcessAwesome from "./Home/WorkProcessAwesome";
 import HeroLanding from "./Home/HeroLanding";
+import bitumen from "../assets/productImgs/bitumen.jpg";
+import granite from "../assets/productImgs/granite.jpg";
+import mango from "../assets/productImgs/mango.jpg";
 
 const HomePage = () => {
   const container = {
@@ -235,17 +238,17 @@ const HomePage = () => {
             {
               name: "Bitumen",
               cat: "Industrial Grade",
-              img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=600",
+              img: bitumen,
             },
             {
               name: "Granite",
               cat: "Natural Stone",
-              img: "https://images.unsplash.com/photo-1601662528567-526cd06f6582?q=80&w=600",
+              img: granite,
             },
             {
               name: "Mango",
               cat: "Premium Produce",
-              img: "https://images.unsplash.com/photo-1553279768-865429fa0078?q=80&w=600",
+              img: mango,
             },
           ].map((item, idx) => (
             <div

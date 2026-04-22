@@ -65,7 +65,7 @@ const ServicesPage = () => {
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             exit={{ opacity: 0, y: -20 }}
-            className="max-w-8xl  px-16 mx-auto border-x border-gray-100"
+            className="max-w-8xl  [@media(max-width:768px)]:px-8  px-4 mx-auto border-x border-gray-100"
           >
             {servicesData.map((service, idx) => (
               <div 
@@ -79,7 +79,7 @@ const ServicesPage = () => {
                     <span className="text-[10px] font-black tracking-[0.4em] text-brand-primary mb-4 block">
                       PROTOCOL. 0{idx + 1}
                     </span>
-                    <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tighter leading-none group-hover:text-brand-primary transition-all">
+                    <h2 className="text-4xl md:text-5xl  [@media(max-width:768px)]:text-2xl  font-bold uppercase tracking-tighter leading-none group-hover:text-brand-primary transition-all">
                       {service.title}
                     </h2>
                   </div>
@@ -99,7 +99,7 @@ const ServicesPage = () => {
                 </div>
 
                 {/* 3. FIXED HEIGHT Visual Column */}
-                <div className="md:col-span-3 relative h-[250px] md:h-[350px] overflow-hidden bg-gray-200">
+                <div className="md:col-span-3 relative h-[250px] md:h-[350px]  [@media(max-width:768px)]:h-[250px] overflow-hidden bg-gray-200">
                   <img 
                     src={service.img} 
                     alt={service.title}

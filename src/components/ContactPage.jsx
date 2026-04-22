@@ -101,7 +101,7 @@ const ContactPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
               viewport={{ once: true }}
-              className="text-5xl md:text-8xl font-bold tracking-tighter uppercase leading-[0.9] mb-8"
+              className="text-5xl md:text-8xl  [@media(max-width:768px)]:text-5xl font-bold tracking-tighter uppercase leading-[0.9] mb-8"
             >
               Bridge The <br />
               <span className="text-brand-primary italic">Global Gap.</span>
@@ -146,7 +146,7 @@ const ContactPage = () => {
                       {info.title}
                     </h3>
                     {info.link ? (
-                      <a href={info.link} className="text-2xl font-bold text-brand-dark hover:text-brand-primary transition-all block uppercase tracking-tight">
+                      <a href={info.link} className="text-2xl  [@media(max-width:768px)]:text-xl font-bold text-brand-dark hover:text-brand-primary transition-all block uppercase tracking-tight">
                         {info.details}
                       </a>
                     ) : (

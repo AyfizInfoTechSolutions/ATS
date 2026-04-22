@@ -22,7 +22,7 @@ const ServiceDetail = ({ service, onBack }) => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="max-w-8xl px-16 mx-auto bg-white min-h-[70vh]"
+      className="max-w-8xl px-16  [@media(max-width:768px)]:px-4 mx-auto bg-white min-h-[70vh]"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 border-x border-gray-100 overflow-hidden">
         
@@ -59,7 +59,7 @@ const ServiceDetail = ({ service, onBack }) => {
         <div className="lg:col-span-8 p-10 lg:p-20">
           <motion.h2 
             variants={itemVariants}
-            className="text-5xl md:text-7xl font-bold uppercase tracking-tighter leading-none mb-12"
+            className="text-5xl md:text-7xl  [@media(max-width:768px)]:text-3xl font-bold uppercase tracking-tighter leading-none mb-12"
           >
             {service.title.split(' ')[0]} <br/>
             <span className="text-brand-primary italic">{service.title.split(' ').slice(1).join(' ')}</span>

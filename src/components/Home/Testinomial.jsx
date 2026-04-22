@@ -74,7 +74,7 @@ const Testimonials = () => {
                 Global Endorsements
               </span>
             </div>
-            <h2 className="text-6xl  font-bold uppercase tracking-tighter leading-[0.8] text-brand-dark">
+            <h2 className="text-6xl [@media(max-width:768px)]:text-4xl font-bold uppercase tracking-tighter leading-[0.8] text-brand-dark">
               VOICES OF <br /> 
               <span className="text-brand-primary italic">CONVICTION.</span>
             </h2>
@@ -131,7 +131,7 @@ const Testimonials = () => {
                   <div className="absolute inset-0 bg-brand-primary/10 mix-blend-multiply" />
                 </div>
                 <div className="text-right">
-                  <h4 className="font-black uppercase tracking-tighter text-brand-dark text-2xl leading-none mb-2">
+                  <h4 className="font-black uppercase tracking-tighter text-brand-dark text-2xl [@media(max-width:768px)]:text-xl leading-none mb-2">
                     {feedback[index].name}
                   </h4>
                   <p className="text-xs font-black text-brand-accent uppercase tracking-[0.2em]">
@@ -144,8 +144,8 @@ const Testimonials = () => {
         </div>
 
         {/* TECHNICAL PROGRESS BAR */}
-        <div className="mt-24 border-t border-gray-100 pt-10 flex items-center justify-between">
-          <div className="flex gap-2">
+        <div className="mt-24 border-t border-gray-100 pt-10 flex items-center justify-between   [@media(max-width:768px)]:gap-8 [@media(max-width:768px)]:mt-42">
+          <div className="flex gap-2 ">
             {feedback.map((_, i) => (
               <div 
                 key={i} 

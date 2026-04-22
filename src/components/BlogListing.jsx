@@ -78,7 +78,7 @@ const BlogListing = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
               viewport={{ once: true }}
-              className="text-6xl md:text-8xl font-bold tracking-tighter uppercase mb-6 leading-[0.9]"
+              className="text-6xl md:text-8xl  [@media(max-width:768px)]:text-5xl font-bold tracking-tighter uppercase mb-6 leading-[0.9]"
             >
               The <span className="text-brand-primary italic">ATS</span> <br />Dispatch
             </motion.h1>
@@ -107,7 +107,7 @@ const BlogListing = () => {
       </section>
 
       {/* Main */}
-      <main className="max-w-8xl mx-auto px-16 py-12">
+      <main className="max-w-8xl mx-auto px-16  [@media(max-width:768px)]:px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-gray-200">
 
           {/* Feed */}
@@ -144,7 +144,7 @@ const BlogListing = () => {
                   </div>
 
                   <Link to={`/blog/${post.id}`}>
-                    <h2 className="text-3xl font-bold leading-tight mb-6 group-hover:text-brand-primary transition-colors uppercase tracking-tight">
+                    <h2 className="text-3xl  [@media(max-width:768px)]:text-xl font-bold leading-tight mb-6 group-hover:text-brand-primary transition-colors uppercase tracking-tight">
                       {post.title}
                     </h2>
                   </Link>
@@ -200,9 +200,9 @@ const BlogListing = () => {
 
               <motion.div
                 whileHover={{ y: -5 }}
-                className="bg-brand-primary p-8 text-white"
+                className="bg-brand-primary p-8  [@media(max-width:768px)]:p-4  text-white"
               >
-                <h3 className="text-2xl font-bold uppercase tracking-tighter mb-4">
+                <h3 className="text-2xl  [@media(max-width:768px)]:text-xl font-bold uppercase tracking-tighter mb-4">
                   Subscribe to the <br />ATS Report
                 </h3>
                 <p className="text-sm text-blue-100 mb-8 opacity-80 font-medium">

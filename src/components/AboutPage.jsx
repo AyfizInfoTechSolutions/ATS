@@ -9,7 +9,7 @@ const AboutPage = () => {
 
       {/* SECTION 1: EDITORIAL HEADER */}
       <section className="border-b border-gray-200">
-        <div className="max-w-8xl mx-auto px-24 py-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div className="max-w-8xl mx-auto px-16  [@media(max-width:768px)]:px-8 py-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-4xl">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -25,7 +25,7 @@ const AboutPage = () => {
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="text-5xl sm:text-7xl md:text-8xl font-bold tracking-tighter uppercase leading-[0.85] mb-8 break-words"
+              className="text-5xl sm:text-7xl [@media(max-width:768px)]:text-5xl md:text-8xl font-bold tracking-tighter uppercase leading-[0.85] mb-8 break-words"
             >
               Securing The <br />
               <span className="text-brand-primary italic">Ayfiz Solution.</span>
@@ -142,7 +142,7 @@ const AboutPage = () => {
 
       {/* SECTION 4: GLOBAL STATS BAR */}
       <div className="bg-gray-50 py-16 border-b border-gray-200">
-        <div className="max-w-8xl mx-auto px-6 flex justify-between px-16">
+        <div className="max-w-8xl mx-auto flex justify-around   [@media(max-width:768px)]:grid  [@media(max-width:768px)]:gap-y-8  [@media(max-width:768px)]:justify-center">
           {[
             { label: "Active Nodes", val: "150+" },
             { label: "Countries Served", val: "42" },

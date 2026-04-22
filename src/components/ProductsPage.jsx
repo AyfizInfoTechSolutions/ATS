@@ -174,7 +174,7 @@ const ProductsPage = () => {
               </span>
             </motion.div>
 
-            <h2 className="text-6xl md:text-[110px] font-bold uppercase tracking-tighter leading-[0.8] text-brand-dark">
+            <h2 className="text-6xl [@media(max-width:768px)]:text-5xl md:text-[110px] font-bold uppercase tracking-tighter leading-[0.8] text-brand-dark">
               CHECK OUR <br />
               <span className="text-brand-primary italic">PRODUCTS</span>
             </h2>
@@ -212,7 +212,7 @@ const ProductsPage = () => {
       </section>
 
       {/* --- VIBRANT PRODUCT GRID --- */}
-      <section className="max-w-8xl mx-auto  mx-auto px-16 py-24 mb-4">
+      <section className="max-w-8xl mx-auto   px-16  [@media(max-width:768px)]:px-8 py-24 mb-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <AnimatePresence mode="popLayout">
             {filteredProducts.map((product, idx) => (
@@ -223,7 +223,7 @@ const ProductsPage = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 whileHover={{ y: -15 }}
-                className="group relative h-[500px] overflow-hidden rounded-[30px] shadow-xl hover:shadow-brand-primary/20 transition-all duration-500"
+                className="group relative h-[300px] overflow-hidden rounded-[30px] shadow-xl hover:shadow-brand-primary/20 transition-all duration-500"
               >
                 {/* IMAGE: Full color by default, grayscale on hover */}
                 <img
@@ -238,7 +238,8 @@ const ProductsPage = () => {
                   <span className="text-[10px] font-black uppercase tracking-widest text-brand-accent mb-1 block">
                     {product.category}
                   </span>
-                  <h3 className="text-3xl font-black text-white uppercase tracking-tighter">
+                  <h3 className="text-3xl font-black text-white uppercase tracking-tighter [@media(max-width:768px)]:text-[14px]
+">
                     {product.name}
                   </h3>
                   <div className="h-1 w-full bg-white/20 mt-4 rounded-full overflow-hidden">

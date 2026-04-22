@@ -15,7 +15,7 @@ const Footer = () => {
   const footerLinks = {
     "Quick Links": ["Home", "About Company", "Our Services", "Products", "Blog"],
     "Support": ["Terms & Conditions", "Privacy Policy", "FAQs", "Support Center"],
-    "Company": ["Careers", "Updates", "Job", "Announce"],
+   
   };
 
   const socialLinks = [

@@ -19,7 +19,7 @@ const InteractiveServices = () => {
         SERVICE
       </div>
 
-      <div className="px-10 lg:px-20 mb-20 relative z-10 flex flex-col lg:flex-row justify-between items-end gap-10">
+      <div className="px-10 lg:px-20 [@media(max-width:768px)]:px-4 mb-20 relative z-10 flex flex-col lg:flex-row justify-between items-end gap-10">
         <div className="max-w-2xl">
           <motion.p 
             initial={{ opacity: 0, x: -20 }}
@@ -28,7 +28,7 @@ const InteractiveServices = () => {
           >
             <span className="w-8 h-[1px] bg-brand-accent"></span> // Technical Solutions
           </motion.p>
-          <h2 className="text-6xl  font-bold uppercase tracking-tighter leading-[0.85]">
+          <h2 className="text-6xl [@media(max-width:768px)]:text-5xl font-bold uppercase tracking-tighter leading-[0.85]">
             OUR <span className="text-brand-primary italic">CAPABILITIES.</span>
           </h2>
         </div>

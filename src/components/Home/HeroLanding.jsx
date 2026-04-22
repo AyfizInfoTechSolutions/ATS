@@ -55,7 +55,7 @@ const HeroLanding = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 min-h-[90vh] items-stretch">
           
           {/* LEFT COLUMN: BRAND MESSAGING */}
-          <div className="lg:col-span-7 flex flex-col justify-center py-20 lg:pr-20">
+          <div className="lg:col-span-7 flex flex-col justify-center py-20 [@media(max-width:768px)]:py-4 lg:pr-20">
             <motion.div variants={itemVariants} className="flex items-center gap-4 mb-10">
               <div className="flex -space-x-2">
                 {[1, 2, 3].map(i => (
@@ -71,13 +71,13 @@ const HeroLanding = () => {
 
             <motion.h1 
               variants={itemVariants}
-              className="text-6xl md:text-[110px] xl:text-[140px] font-bold uppercase tracking-tighter leading-[0.82] text-brand-dark mb-12"
+              className="text-6xl [@media(max-width:768px)]:text-5xl md:text-[110px] xl:text-[140px] font-bold uppercase tracking-tighter leading-[0.82] text-brand-dark mb-12"
             >
               CONNECT <br />
               <span className="text-brand-primary italic opacity-90">THRIVE.</span>
             </motion.h1>
 
-            <motion.div variants={itemVariants} className="relative mb-16">
+            <motion.div variants={itemVariants} className="relative mb-16 [@media(max-width:768px)]:mb-4 ">
               <p className="text-xl md:text-2xl text-gray-500 font-medium max-w-xl leading-relaxed pl-12 border-l-2 border-brand-accent/20">
                 Revolutionizing <span className="text-brand-dark font-bold">global trade</span> through high-performance supply chain networks across Asia and Europe.
               </p>
@@ -130,17 +130,19 @@ const HeroLanding = () => {
               initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1, duration: 1 }}
-              className="relative z-10 grid grid-cols-2 gap-4 lg:pr-10"
+              className="relative z-10 grid grid-cols-2 gap-4 lg:pr-10 "
             >
-              <div className="bg-white/90 backdrop-blur-2xl p-10 border-t-4 border-brand-accent shadow-2xl">
+              <div className="bg-white/90 backdrop-blur-2xl p-10  [@media(max-width:768px)]:p-6 border-t-4 border-brand-accent shadow-2xl">
                  <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">Delivery Rate</h4>
-                 <div className="text-5xl font-bold tracking-tighter text-brand-dark">98<span className="text-brand-accent">.4</span></div>
-                 <p className="text-[9px] font-bold text-gray-400 mt-2 uppercase tracking-[0.2em]">Validated_Success</p>
+                 <div className="text-5xl [@media(max-width:768px)]:text-3xl font-bold tracking-tighter text-brand-dark">98<span className="text-brand-accent">.4</span></div>
+                 <p className="text-[9px]  [@media(max-width:768px)]:text-[7px] font-bold
+                  text-gray-400 mt-2 uppercase tracking-[0.2em]">Validated_Success</p>
               </div>
-              <div className="bg-brand-dark/95 backdrop-blur-2xl p-10 shadow-2xl">
+              <div className="bg-brand-dark/95 backdrop-blur-2xl p-10 [@media(max-width:768px)]:p-6 shadow-2xl">
                  <h4 className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-4">Nodes Active</h4>
-                 <div className="text-5xl font-bold tracking-tighter text-white">24<span className="text-brand-accent">/7</span></div>
-                 <p className="text-[9px] font-bold text-white/30 mt-2 uppercase tracking-[0.2em]">Global_Network</p>
+                 <div className="text-5xl [@media(max-width:768px)]:text-3xl font-bold tracking-tighter text-white">24<span className="text-brand-accent">/7</span></div>
+                 <p className="text-[9px] [@media(max-width:768px)]:text-[7px] font-bold
+                  text-white/30 mt-2 uppercase tracking-[0.2em]">Global_Network</p>
               </div>
             </motion.div>
           </div>
@@ -148,7 +150,7 @@ const HeroLanding = () => {
       </motion.div>
 
       {/* --- FOOTER AUTO-TICKER --- */}
-      <div className="absolute bottom-0 left-0 w-full bg-brand-dark py-6 border-t border-white/5 overflow-hidden z-20">
+      <div className="absolute bottom-0 left-0 w-full bg-brand-dark py-6 border-t [@media(max-width:768px)]:py-8 border-white/5 overflow-hidden z-20">
         <motion.div 
           animate={{ x: [0, -1500] }}
           transition={{ repeat: Infinity, duration: 40, ease: "linear" }}

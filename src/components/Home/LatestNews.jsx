@@ -34,7 +34,7 @@ const LatestNews = () => {
     <section className="max-w-8xl mx-auto border-x border-gray-100 pt-32 bg-white relative overflow-hidden">
       
       {/* SECTION HEADER */}
-      <div className="px-10 lg:px-20 mb-24 flex flex-col lg:flex-row lg:items-end justify-between gap-12 relative z-10">
+      <div className="px-10 lg:px-20 [@media(max-width:768px)]:px-4 mb-24 flex flex-col lg:flex-row lg:items-end justify-between gap-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -44,7 +44,7 @@ const LatestNews = () => {
             <span className="w-16 h-[1px] bg-brand-accent" />
             <span className="text-brand-accent font-black uppercase tracking-[0.5em] text-[10px]">Strategic Insights</span>
           </div>
-          <h2 className="text-6xl font-bold uppercase tracking-[-0.05em] text-brand-dark leading-[0.85]">
+          <h2 className="text-6xl [@media(max-width:768px)]:text-5xl font-bold uppercase tracking-[-0.05em] text-brand-dark leading-[0.85]">
             LATEST <br />
             <span className="text-brand-primary italic opacity-90">NEWS.</span>
           </h2>
@@ -63,7 +63,7 @@ const LatestNews = () => {
       </div>
 
       {/* NEWS GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-3 border-t border-gray-100 px-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 border-t border-gray-100 px-16 [@media(max-width:768px)]:px-4 gap-4">
         {posts.map((post, idx) => (
           <motion.div
             key={idx}

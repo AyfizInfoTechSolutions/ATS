@@ -37,7 +37,7 @@ const WorkProcessAwesome = () => {
         FLOW
       </motion.div>
 
-      <div className="px-10 lg:px-20 relative z-10">
+      <div className="px-10 lg:px-20 [@media(max-width:768px)]:px-8 relative z-10">
         <div className="mb-32 grid grid-cols-1 lg:grid-cols-2 items-end gap-16">
           <div>
             <motion.div 
@@ -52,7 +52,7 @@ const WorkProcessAwesome = () => {
               </span>
             </motion.div>
             
-            <h2 className="text-6xl font-bold uppercase tracking-tighter leading-[0.8]">
+            <h2 className="text-6xl [@media(max-width:768px)]:text-5xl font-bold uppercase tracking-tighter leading-[0.8]">
               How We <br /> 
               <span className="text-brand-primary italic">Deliver Value.</span>
             </h2>

@@ -35,7 +35,7 @@ const BlogDetail = () => {
 
       {/* Header */}
       <header className="relative border-b border-gray-200">
-        <div className="max-w-8xl mx-auto  px-16 flex flex-col lg:flex-row min-h-[60vh]">
+        <div className="max-w-8xl mx-auto  px-16 flex flex-col lg:flex-row min-h-[60vh]  [@media(max-width:768px)]:px-4">
           
           {/* Text */}
           <motion.div
@@ -56,7 +56,7 @@ const BlogDetail = () => {
               {post.category}
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase leading-[0.95] mb-8">
+            <h1 className="text-4xl  [@media(max-width:768px)]:text-5xl md:text-6xl font-bold tracking-tighter uppercase leading-[0.95] mb-8">
               {post.title}
             </h1>
 
@@ -171,7 +171,7 @@ const BlogDetail = () => {
               className="mt-20 pt-12 border-t border-gray-100 flex items-center justify-between"
             >
               <span className="text-xs font-black uppercase tracking-[0.3em] text-gray-400">Share Report</span>
-              <div className="flex gap-4">
+              <div className="flex gap-4 flex-wrap  [@media(max-width:768px)]:mx-4 ">
                 {['LinkedIn', 'Twitter', 'Copy'].map((platform) => (
                   <button key={platform} className="text-xs font-black uppercase tracking-widest px-6 py-3 border border-gray-200 hover:bg-brand-dark hover:text-white transition-all">
                     {platform}

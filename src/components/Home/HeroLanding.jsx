@@ -71,14 +71,18 @@ const HeroLanding = () => {
 
             <motion.h1 
               variants={itemVariants}
-              className="text-6xl [@media(max-width:768px)]:text-5xl md:text-[110px] xl:text-[140px] font-bold uppercase tracking-tighter leading-[0.82] text-brand-dark mb-12"
+              className="text-6xl [@media(max-width:768px)]:text-5xl md:text-[78px] xl:text-[110px] font-bold uppercase tracking-tighter leading-[0.82] text-brand-dark mb-12"
             >
               CONNECT <br />
               <span className="text-brand-primary italic opacity-90">THRIVE.</span>
             </motion.h1>
 
             <motion.div variants={itemVariants} className="relative mb-16 [@media(max-width:768px)]:mb-4 ">
-              <p className="text-xl md:text-2xl text-gray-500 font-medium max-w-xl leading-relaxed pl-12 border-l-2 border-brand-accent/20">
+              <p className="text-xl md:text-2xl  text-gray-500 font-medium max-w-xl [@media(min-width:1020px)_and_(max-width:1324px)]:w-[400px]
+              
+              
+               [@media(max-width:1058px)]:pl-4
+              leading-relaxed pl-12 border-l-2 border-brand-accent/20">
                 Revolutionizing <span className="text-brand-dark font-bold">global trade</span> through high-performance supply chain networks across Asia and Europe.
               </p>
             </motion.div>

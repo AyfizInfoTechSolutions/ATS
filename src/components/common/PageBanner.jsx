@@ -1,5 +1,6 @@
 import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import bgVideo from "../../assets/bg-abs.mp4"; // Import your video
 
 const PageBanner = ({ title = "Page Title", path = "Home" }) => {
   const { scrollY } = useScroll();
@@ -10,7 +11,7 @@ const PageBanner = ({ title = "Page Title", path = "Home" }) => {
       {/* Background Infrastructure */}
       <div className="absolute inset-0 z-0">
         <div 
-          className="absolute inset-0 opacity-[0.1]" 
+          className="absolute inset-0 opacity-[0.1] z-20" // Increased Z-index to stay above video
           style={{ 
             backgroundImage: `linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)`,
             backgroundSize: '50px 50px' 
@@ -19,11 +20,18 @@ const PageBanner = ({ title = "Page Title", path = "Home" }) => {
         
         <motion.div style={{ y }} className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-b from-[#020617]/90 via-[#020617]/50 to-[#020617] z-10" />
-          <img 
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" 
-            alt="Background"
+          
+          {/* Video Implementation */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover grayscale brightness-50 scale-110"
-          />
+          >
+            <source src={bgVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </motion.div>
 
         <motion.div 
@@ -34,7 +42,7 @@ const PageBanner = ({ title = "Page Title", path = "Home" }) => {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-20 max-w-7xl  mx-auto px-6 lg:px-20 w-full">
+      <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-20 w-full">
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}

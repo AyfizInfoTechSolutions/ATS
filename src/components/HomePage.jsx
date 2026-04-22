@@ -357,7 +357,7 @@ const HomePage = () => {
               className="p-12 lg:p-20 border-r border-white/10 text-center relative group overflow-hidden"
             >
               {/* Animated Background Number */}
-              <span className="absolute -bottom-4 -right-2 text-8xl font-black text-white/[0.03] select-none group-hover:text-brand-accent transition-colors duration-700">
+              <span className="absolute bottom-1 right-1 text-7xl font-black text-white/[0.03] select-none group-hover:text-brand-accent transition-colors duration-700">
                 {stat.value}
               </span>
 

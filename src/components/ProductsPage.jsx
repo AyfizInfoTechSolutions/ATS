@@ -160,7 +160,7 @@ const ProductsPage = () => {
       <PageBanner title="INVENTORY" path="Home" />
 
       {/* --- INDUSTRIAL HEADER (Matches Site Identity) --- */}
-      <section className="max-w-8xl px-16 mx-auto border-x border-gray-100">
+      <section className="max-w-8xl px-16 [@media(max-width:768px)]:px-4  mx-auto border-x border-gray-100">
         <div className="grid grid-cols-1 lg:grid-cols-12 border-b border-gray-100">
           <div className="lg:col-span-8 py-10  border-r border-gray-100 bg-white">
             <motion.div

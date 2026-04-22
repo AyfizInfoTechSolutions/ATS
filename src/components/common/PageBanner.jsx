@@ -34,7 +34,7 @@ const PageBanner = ({ title = "Page Title", path = "Home" }) => {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-20 w-full">
+      <div className="relative z-20 max-w-7xl  mx-auto px-6 lg:px-20 w-full">
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -52,7 +52,7 @@ const PageBanner = ({ title = "Page Title", path = "Home" }) => {
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
-                className={`inline-block text-6xl md:text-8xl lg:text-[9rem] font-black leading-none tracking-tighter ${
+                className={`inline-block text-6xl md:text-8xl [@media(max-width:768px)]:text-5xl lg:text-[9rem] font-black leading-none tracking-tighter ${
                   index === 0 ? "text-brand-primary" : "text-white"
                 }`}
               >

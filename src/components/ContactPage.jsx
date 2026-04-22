@@ -76,7 +76,7 @@ const ContactPage = () => {
   ];
 
   return (
-    <main className="min-h-screen bg-white font-sans antialiased text-brand-dark">
+    <main className="bg-white min-h-screen pt-24 overflow-x-hidden relative">
       <PageBanner title="CONTACT" path="Home" />
 
       {/* Header */}

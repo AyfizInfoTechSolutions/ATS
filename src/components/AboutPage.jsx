@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import PageBanner from './common/PageBanner';
-
+import trade from "../assets/fly.png"
 const AboutPage = () => {
   return (
     <main className="bg-white min-h-screen text-brand-dark font-sans antialiased pt-20 overflow-x-hidden">
@@ -27,12 +27,13 @@ const AboutPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               className="text-5xl sm:text-7xl [@media(max-width:768px)]:text-5xl md:text-8xl font-bold tracking-tighter uppercase leading-[0.85] mb-8 break-words"
             >
-              Securing The <br />
-              <span className="text-brand-primary italic">Ayfiz Solution.</span>
+              Driving Global  <br />
+              <span className="text-brand-primary italic">Trade Forward
+                .</span>
             </motion.h1>
 
             <p className="text-xl text-gray-500 font-medium max-w-2xl border-l-4 border-brand-accent pl-8 leading-relaxed">
-              Engineering efficient supply chains and strategic sourcing models for the global marketplace. We don't just move cargo; we integrate commerce.
+              Smart sourcing. Efficient logistics. Scalable solutions designed and delivered streamlined trade services that help businesses move faster, operate smarter, and scale without barriers.From documentation to delivery, every step is built with precision, transparency, and control.
             </p>
           </div>
           <div className="flex flex-col items-start md:items-end">
@@ -45,21 +46,25 @@ const AboutPage = () => {
       {/* SECTION 2: INDUSTRIAL CONTENT & VISUALS */}
       <section className="max-w-[1440px]  mx-auto border-x border-gray-100">
         <div className="grid grid-cols-1 lg:grid-cols-12">
-          
+
           {/* Left Side: Editorial Content */}
-          <div className="lg:col-span-6 p-10 lg:p-20 border-r border-gray-200">
+          <div className="lg:col-span-6 p-10 lg:p-16 border-r border-gray-200">
             <article className="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-8">
               <p className="text-2xl font-bold text-brand-dark leading-snug uppercase tracking-tight mb-12 border-b border-gray-100 pb-12">
-                At Ayfiz Trading Solutions, we are dedicated to empowering businesses with the tools and expertise needed to thrive in the complex global marketplace.
-              </p>
-              
+                Ayfiz Trade Services engineers the infrastructure for businesses to scale within the global marketplace.            </p>
+
               <div className="text-gray-500 space-y-6">
                 <p>
-                  With a strong focus on international trade efficiency, our team combines industry-specific knowledge and innovative strategies to provide a comprehensive range of professional services. 
+               By integrating deep industrial intelligence with high-fidelity operational strategies, we provide a definitive framework for international trade efficiency.      Our focus is the creation of seamless supply chains. From intelligent sourcing to precise warehousing and distribution.                 </p>
+                <p>
+               we ensure our partners maintain frictionless, real-time access to the world’s most critical markets.  Our commitment is rooted in structural excellence and the relentless pursuit of trade velocity.
                 </p>
                 <p>
-                  Our commitment to operational excellence extends to sourcing solutions, warehousing, and distribution, ensuring that our clients have seamless, real-time access to global markets.
+
+                  At the heart of everything we do is a commitment to partnership - not just as a service provider, but as a strategic extension of your business. We invest the time to understand your industry, your objectives, and your operational realities, ensuring every solution is aligned with your growth trajectory.
                 </p>
+                <p>Whether you are entering a new market, optimizing an existing supply chain, or navigating the complexities of cross-border compliance, Ayfiz Trade Services remains a consistent partner - experienced, dependable, and built for the demands of modern global commerce.
+</p>
               </div>
             </article>
           </div>
@@ -71,8 +76,8 @@ const AboutPage = () => {
                 <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-primary mb-8 underline underline-offset-8 text-center md:text-left">Core Competencies</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-gray-200 bg-white">
                   {[
-                    "Sourcing Solutions", "Warehousing / Distribution", 
-                    "Terminal Operations", "Customs Brokerage", 
+                    "Sourcing Solutions", "Warehousing / Distribution",
+                    "Terminal Operations", "Customs Brokerage",
                     "Consultancy", "Global Dispatch"
                   ].map((service) => (
                     <div key={service} className="p-8 border border-gray-100 font-black uppercase text-xs tracking-[0.2em] group hover:bg-brand-dark hover:text-white transition-all">
@@ -83,9 +88,9 @@ const AboutPage = () => {
               </div>
 
               <div className="relative h-80 w-full border-2 border-gray-200 overflow-hidden group">
-                <img 
-                  src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1500" 
-                  alt="Operations" 
+                <img
+                  src={trade}
+                  alt="Operations"
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105"
                 />
                 <div className="absolute top-0 right-0 bg-brand-primary text-white px-4 py-2 text-[10px] font-black uppercase">
@@ -100,16 +105,16 @@ const AboutPage = () => {
       {/* SECTION 3: OPERATIONAL VALUES (MISSION & VISION) */}
       <section className="border-y border-gray-200 bg-white">
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200">
-          
+
           {/* Mission */}
           <div className="p-10 lg:p-16 space-y-8 group hover:bg-brand-soft transition-colors duration-500">
             <div className="flex items-baseline justify-between">
               <span className="text-6xl font-black text-gray-100 group-hover:text-brand-primary/20 transition-colors">01</span>
               <h3 className="text-xs font-black uppercase tracking-[0.3em] text-brand-primary">The Mission</h3>
             </div>
-            <h4 className="text-3xl font-bold uppercase tracking-tighter leading-none">Streamlining <br /> Global Flow.</h4>
+            <h4 className="text-3xl font-bold uppercase tracking-tighter leading-none">Optimizing <br /> Global Flow.</h4>
             <p className="text-gray-500 font-medium leading-relaxed">
-              To provide the technical infrastructure and strategic intelligence that allows businesses to navigate international trade without friction.
+              To engineer the strategic infrastructure and operational intelligence required for businesses to navigate international trade with zero friction.
             </p>
           </div>
 
@@ -119,9 +124,9 @@ const AboutPage = () => {
               <span className="text-6xl font-black text-gray-100 group-hover:text-brand-primary/20 transition-colors">02</span>
               <h3 className="text-xs font-black uppercase tracking-[0.3em] text-brand-accent">The Vision</h3>
             </div>
-            <h4 className="text-3xl font-bold uppercase tracking-tighter leading-none">Architecting <br /> Tomorrow.</h4>
+            <h4 className="text-3xl font-bold uppercase tracking-tighter leading-none">Architecting Global <br />  Continuity.</h4>
             <p className="text-gray-500 font-medium leading-relaxed">
-              Becoming the standard-bearer for digitalized trading solutions, where every supply chain is transparent and infinitely scalable.
+              To establish the definitive benchmark for integrated trade solutions, creating a future where every supply chain is transparent, resilient, and infinitely scalable.
             </p>
           </div>
 
@@ -131,9 +136,9 @@ const AboutPage = () => {
               <span className="text-6xl font-black text-gray-100 group-hover:text-brand-primary/20 transition-colors">03</span>
               <h3 className="text-xs font-black uppercase tracking-[0.3em] text-brand-primary">The Core</h3>
             </div>
-            <h4 className="text-3xl font-bold uppercase tracking-tighter leading-none">Absolute <br /> Transparency.</h4>
+            <h4 className="text-3xl font-bold uppercase tracking-tighter leading-none">Structural<br /> Integrity.</h4>
             <p className="text-gray-500 font-medium leading-relaxed">
-              We believe data integrity is the only way to build trust in global trade. Our solutions ensure every stakeholder is aligned in real-time.
+              We believe that data fidelity is the foundation of global trust. Our framework ensures every stakeholder is synchronized through real-time transparency and absolute accountability.
             </p>
           </div>
 
@@ -166,13 +171,13 @@ const AboutPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               className="text-4xl md:text-6xl font-bold tracking-tighter uppercase leading-[0.95] mb-8"
             >
-              Integrating Global <br />Commerce.
+              Unified Trade  <br />Systems.
             </motion.h2>
             <p className="text-xl text-blue-100/70 font-medium max-w-2xl leading-relaxed">
-              At Ayfiz, we don't just solve logistics; we engineer competitive advantages. Join our network today.
+              We engineer intelligence into global flow to deliver a definitive market edge. Secure your position in our network.
             </p>
           </div>
-          
+
           <div className="lg:col-span-4 p-10 lg:p-20 flex flex-col justify-center gap-6">
             <button className="w-full bg-brand-primary text-white text-xs font-black uppercase tracking-widest py-5 hover:bg-white hover:text-brand-dark transition-all duration-300">
               Initiate Project Hub

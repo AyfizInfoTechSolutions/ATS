@@ -1,13 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowLeft } from 'react-icons/fi';
+import { useNavigate } from "react-router-dom";
 
 // Define animation variants for orchestration
 const containerVariants = {
   hidden: { opacity: 0 },
-  visible: { 
-    opacity: 1, 
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 } 
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
   },
 };
 
@@ -17,18 +18,19 @@ const itemVariants = {
 };
 
 const ServiceDetail = ({ service, onBack }) => {
+  const navigate = useNavigate();
   return (
-    <motion.div 
+    <motion.div
       variants={containerVariants}
       initial="hidden"
       animate="visible"
       className="max-w-8xl px-16  [@media(max-width:768px)]:px-4 mx-auto bg-white min-h-[70vh]"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 border-x border-gray-100 overflow-hidden">
-        
+
         {/* Sidebar */}
         <motion.div variants={itemVariants} className="lg:col-span-4 p-10 lg:p-16 border-r border-gray-200 bg-gray-50">
-          <button 
+          <button
             onClick={onBack}
             className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-brand-accent hover:text-brand-dark transition-colors mb-20"
           >
@@ -57,11 +59,11 @@ const ServiceDetail = ({ service, onBack }) => {
 
         {/* Content Area */}
         <div className="lg:col-span-8 p-10 lg:p-20">
-          <motion.h2 
+          <motion.h2
             variants={itemVariants}
             className="text-5xl md:text-7xl  [@media(max-width:768px)]:text-3xl font-bold uppercase tracking-tighter leading-none mb-12"
           >
-            {service.title.split(' ')[0]} <br/>
+            {service.title.split(' ')[0]} <br />
             <span className="text-brand-primary italic">{service.title.split(' ').slice(1).join(' ')}</span>
           </motion.h2>
 
@@ -69,7 +71,7 @@ const ServiceDetail = ({ service, onBack }) => {
             <p className="text-brand-dark text-2xl font-bold border-l-4 border-brand-accent pl-8 mb-12 italic">
               {service.full}
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 pt-16 border-t border-gray-100">
               <div className="space-y-4">
                 <h4 className="text-sm font-black uppercase tracking-widest text-brand-dark">Execution Strategy</h4>
@@ -83,19 +85,21 @@ const ServiceDetail = ({ service, onBack }) => {
           </motion.div>
 
           <motion.div variants={itemVariants} className="mt-20 flex flex-col sm:flex-row gap-4">
-            <motion.button 
-              whileHover={{ y: -4 }} 
+            <motion.button
+              whileHover={{ y: -4 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => navigate("/contact")}
               className="bg-brand-dark text-white px-10 py-5 text-xs font-black uppercase tracking-[0.2em] transition-all"
             >
               Request Deployment
             </motion.button>
-            <motion.button 
+            <motion.button
               whileHover={{ y: -4 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => navigate("/contact")}
               className="border-2 border-gray-200 px-10 py-5 text-xs font-black uppercase tracking-[0.2em] hover:border-brand-primary transition-all"
             >
-              Download PDF Specs
+              Contact us
             </motion.button>
           </motion.div>
         </div>

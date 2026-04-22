@@ -73,8 +73,8 @@ const HeroLanding = () => {
               variants={itemVariants}
               className="text-6xl [@media(max-width:768px)]:text-5xl md:text-[78px] xl:text-[110px] font-bold uppercase tracking-tighter leading-[0.82] text-brand-dark mb-12"
             >
-              CONNECT <br />
-              <span className="text-brand-primary italic opacity-90">THRIVE.</span>
+              SOURCE.  <br />
+              <span className="text-brand-primary italic opacity-90">EXECUTE.</span>
             </motion.h1>
 
             <motion.div variants={itemVariants} className="relative mb-16 [@media(max-width:768px)]:mb-4 ">

@@ -50,6 +50,66 @@ const posts = [
 
 const BlogListing = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubscribe = async () => {
+    if (!email) {
+      setMessage("Please enter your email.");
+      setIsError(true);
+      return;
+    }
+
+    // simple email validation
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setMessage("Please enter a valid email.");
+      setIsError(true);
+      return;
+    }
+
+    setLoading(true);
+    setMessage("");
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/newsletter/subscribe`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage(data.message || "Subscribed successfully ✅");
+        setIsError(false);
+        setEmail("");
+
+        setTimeout(() => setMessage(""), 2000);
+      } else if (response.status === 422) {
+        setMessage(data.message || "Already subscribed");
+        setIsError(true);
+
+        setTimeout(() => setMessage(""), 2000);
+      } else {
+        setMessage("Something went wrong. Please try again.");
+        setIsError(true);
+      }
+    } catch (error) {
+      console.error(error);
+      setMessage("Network error. Please try again.");
+      setIsError(true);
+    }
+
+    setLoading(false);
+  };
 
   return (
     <div className="bg-white min-h-screen font-sans antialiased text-brand-dark pt-20">
@@ -58,7 +118,7 @@ const BlogListing = () => {
       {/* Header */}
       <section className="border-b border-gray-200">
         <div className="max-w-8xl px-16 mx-auto  py-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
-          
+
           <div className="max-w-3xl">
             <motion.div
               initial={{ opacity: 0, x: -40 }}
@@ -198,21 +258,46 @@ const BlogListing = () => {
                 </ul>
               </div>
 
+              {/* Newsletter */}
               <motion.div
                 whileHover={{ y: -5 }}
-                className="bg-brand-primary p-8  [@media(max-width:768px)]:p-4  text-white"
+                className="bg-brand-primary p-10 text-white shadow-xl"
               >
-                <h3 className="text-2xl  [@media(max-width:768px)]:text-xl font-bold uppercase tracking-tighter mb-4">
+                <h3 className="text-2xl font-bold uppercase tracking-tighter mb-4 leading-none">
                   Subscribe to the <br />ATS Report
                 </h3>
-                <p className="text-sm text-blue-100 mb-8 opacity-80 font-medium">
+
+                <p className="text-sm text-blue-100 mb-6 opacity-80">
                   Join 15,000+ logistics professionals...
                 </p>
-                <button className="w-full bg-brand-dark text-white text-xs font-black uppercase tracking-widest py-4 hover:bg-brand-accent transition-all">
-                  Get Access
-                </button>
-              </motion.div>
 
+                <div className="space-y-3">
+                  {/* Email Input */}
+                  <input
+                    type="email"
+                    placeholder="Email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full bg-white/10 border border-white/20 p-4 text-sm outline-none focus:bg-white/20"
+                  />
+
+                  {/* Button */}
+                  <button
+                    onClick={handleSubscribe}
+                    disabled={loading}
+                    className="w-full bg-brand-dark text-white text-xs font-black uppercase tracking-widest py-4 hover:bg-brand-accent transition-all disabled:opacity-50"
+                  >
+                    {loading ? "Submitting..." : "Get Access"}
+                  </button>
+
+                  {/* Message */}
+                  {message && (
+                    <p className={`text-sm mt-2 ${isError ? "text-red-300" : "text-green-300"}`}>
+                      {message}
+                    </p>
+                  )}
+                </div>
+              </motion.div>
             </div>
           </motion.aside>
         </div>

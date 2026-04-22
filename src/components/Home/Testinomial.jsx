@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import user from "../../assets/user.png";
 
 const Testimonials = () => {
   const [index, setIndex] = useState(0);
@@ -11,19 +12,19 @@ const Testimonials = () => {
       name: "Mostfa Kalarod",
       company: "ERD Improvers, Tanzania",
       text: "Mychus Interfurn has been instrumental in our global expansion. Their expert consultancy and efficient trade solutions streamlined our import/export processes.",
-      img: "https://i.pravatar.cc/150?u=mostfa",
+      img: user,
     },
     {
       name: "Andreas Hugi",
       company: "Swiss Refines",
       text: "Working with Mychus Interfurn has been a pleasure. Their knowledge of customs regulations and proactive approach have saved us time and money.",
-      img: "https://i.pravatar.cc/150?u=andreas",
+      img: user,
     },
     {
       name: "Zayd bin Malik",
       company: "Gulf Logistics",
       text: "Their precision in handling documentation for the UAE market is unmatched. A true partner in modern trade.",
-      img: "https://i.pravatar.cc/150?u=zayd",
+      img: user,
     },
   ];
 

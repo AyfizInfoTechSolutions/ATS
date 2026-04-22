@@ -172,20 +172,16 @@ const HomePage = () => {
               variants={fadeUp}
               className="text-xl text-gray-500 font-medium leading-relaxed mb-10 border-l-4 border-brand-primary pl-10"
             >
-              At Mychus Interfurn, we specialize in helping businesses connect
-              and thrive in the global marketplace. Our comprehensive range of
-              services is designed to facilitate seamless international trade,
-              enabling clients to expand their reach and capitalize on new
-              opportunities.
+              At Ayfiz Trade Services, we enable businesses to operate with clarity and control in the global marketplace. In an environment shaped by volatility and regulation, success depends on more than opportunity—it depends on execution.
+              We bring together sourcing intelligence, trade compliance, and end-to-end supply chain management into a unified system designed for reliability.
             </motion.p>
 
             <motion.p
               variants={fadeUp}
               className="text-sm text-gray-400 uppercase tracking-widest font-bold leading-loose max-w-lg"
             >
-              Through expert consultancy, we guide businesses in navigating
-              complex markets and developing tailored strategies that align with
-              their goals.
+              Every engagement is built around precision, from supplier selection to final delivery.
+              Our role goes beyond facilitation. We design trade operations that hold under pressure—so you can expand into new markets, build stronger supply networks, and grow with confidence.
             </motion.p>
 
             {/* 🔥 Badge */}

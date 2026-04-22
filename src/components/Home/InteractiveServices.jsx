@@ -3,13 +3,31 @@ import { motion } from 'framer-motion';
 
 const InteractiveServices = () => {
   const services = [
-    { title: "Trade Services", desc: "International Trade Services facilitate global business by providing expertise in import/export, logistics, and compliance." },
-    { title: "International Broking", desc: "Facilitating financial transactions, such as buying and selling assets, between parties across global markets." },
-    { title: "Business Consulting", desc: "Guidance to companies expanding internationally, providing market insights, strategies, and compliance support." },
-    { title: "Sourcing Services", desc: "Finding, evaluating, and securing suppliers or products to meet your procurement needs." },
-    { title: "Warehouse & Distro", desc: "Storing goods efficiently and managing their movement to ensure timely delivery to customers." },
-    { title: "Exports & Imports", desc: "Your trusted partner in global trade, specializing in UAE, KSA, India, and the UK regions." },
-  ];
+  { 
+    title: "Integrated Trade Operations", 
+    desc: "Precision in Global Flow. We eliminate the friction of international borders by managing the full lifecycle of import and export mechanics with technical rigour." 
+  },
+  { 
+    title: "Strategic Market Broking", 
+    desc: "Asset Access & Alignment. Providing high-fidelity representation across international exchanges to secure assets and manage cross-border transaction settlements." 
+  },
+  { 
+    title: "Expansion Architecture", 
+    desc: "Intelligence for New Frontiers. Strategic frameworks designed to navigate regulatory landscapes and establish a resilient operational footprint in foreign markets." 
+  },
+  { 
+    title: "Procurement Intelligence", 
+    desc: "Validated Global Sourcing. Engineering resilient supply chains by identifying, vetting, and onboarding high-performance partners that meet absolute quality benchmarks." 
+  },
+  { 
+    title: "Infrastructure & Velocity", 
+    desc: "Advanced Warehousing & Distribution. Maintaining the momentum of your supply chain through real-time inventory logic and high-speed distribution networks." 
+  },
+  { 
+    title: "Regional Trade Gateway", 
+    desc: "Specialized UAE · KSA · IND · UK. Navigating the critical corridors of the Middle East, Europe, and Asia with native intelligence and methodical precision." 
+  },
+];
 
   return (
     <section className="max-w-8xl mx-auto border-x border-gray-100 pt-32 bg-brand-dark text-white relative overflow-hidden">

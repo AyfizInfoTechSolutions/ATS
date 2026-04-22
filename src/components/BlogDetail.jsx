@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PageBanner from './common/PageBanner';
@@ -15,10 +15,23 @@ const fadeUp = {
     },
   }),
 };
+const socialmedia = [{
+  name: "LinkedIn",
+  Link: "https://www.linkedin.com/company/ayfiz"
+}, {
+  name: "Instagram",
+  Link: "https://www.instagram.com/ayfizabsolutes"
+}, {
+  name: "Facebook",
+  Link: "https://www.facebook.com/ayfizabsolutes/"
+}]
 
 const BlogDetail = () => {
   const { id } = useParams();
-
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const post = {
     title: "The Pros And Cons Of Trading in Modern Logistics",
     category: "Logistics Strategy",
@@ -29,6 +42,61 @@ const BlogDetail = () => {
     image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000"
   };
 
+  const handleSubscribe = async () => {
+    if (!email) {
+      setMessage("Please enter your email.");
+      setIsError(true);
+      return;
+    }
+
+    // simple email validation
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setMessage("Please enter a valid email.");
+      setIsError(true);
+      return;
+    }
+
+    setLoading(true);
+    setMessage("");
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/newsletter/subscribe`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage(data.message || "Subscribed successfully ✅");
+        setIsError(false);
+        setEmail("");
+
+        setTimeout(() => setMessage(""), 2000);
+      } else if (response.status === 422) {
+        setMessage(data.message || "Already subscribed");
+        setIsError(true);
+
+        setTimeout(() => setMessage(""), 2000);
+      } else {
+        setMessage("Something went wrong. Please try again.");
+        setIsError(true);
+      }
+    } catch (error) {
+      console.error(error);
+      setMessage("Network error. Please try again.");
+      setIsError(true);
+    }
+
+    setLoading(false);
+  };
   return (
     <div className="bg-white min-h-screen text-brand-dark font-sans antialiased">
       <PageBanner title="BLOG" path="Home" />
@@ -36,7 +104,7 @@ const BlogDetail = () => {
       {/* Header */}
       <header className="relative border-b border-gray-200">
         <div className="max-w-8xl mx-auto  px-16 flex flex-col lg:flex-row min-h-[60vh]  [@media(max-width:768px)]:px-4">
-          
+
           {/* Text */}
           <motion.div
             initial="hidden"
@@ -81,9 +149,9 @@ const BlogDetail = () => {
             viewport={{ once: true }}
             className="lg:w-1/2 relative overflow-hidden order-1 lg:order-2 bg-gray-100"
           >
-            <img 
-              src={post.image} 
-              alt={post.title} 
+            <img
+              src={post.image}
+              alt={post.title}
               className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105"
             />
           </motion.div>
@@ -93,7 +161,7 @@ const BlogDetail = () => {
       {/* Content */}
       <main className="max-w-8xl mx-auto border-x border-gray-100">
         <div className="grid grid-cols-1 lg:grid-cols-12">
-          
+
           {/* Article */}
           <motion.div
             initial="hidden"
@@ -103,7 +171,7 @@ const BlogDetail = () => {
             className="lg:col-span-8 p-10 lg:p-20 border-r border-gray-200"
           >
             <article className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
-              
+
               <p className="text-2xl font-bold text-brand-dark leading-snug mb-12 border-l-4 border-brand-accent pl-8">
                 The logistics industry is undergoing a massive transformation...
               </p>
@@ -172,9 +240,11 @@ const BlogDetail = () => {
             >
               <span className="text-xs font-black uppercase tracking-[0.3em] text-gray-400">Share Report</span>
               <div className="flex gap-4 flex-wrap  [@media(max-width:768px)]:mx-4 ">
-                {['LinkedIn', 'Twitter', 'Copy'].map((platform) => (
-                  <button key={platform} className="text-xs font-black uppercase tracking-widest px-6 py-3 border border-gray-200 hover:bg-brand-dark hover:text-white transition-all">
-                    {platform}
+                {socialmedia.map((platform) => (
+                  <button key={platform.name}
+                    onClick={() => window.open(platform.Link, "_blank")}
+                    className="text-xs font-black uppercase tracking-widest px-6 py-3 border border-gray-200 hover:bg-brand-dark hover:text-white transition-all">
+                    {platform.name}
                   </button>
                 ))}
               </div>
@@ -208,7 +278,6 @@ const BlogDetail = () => {
                 </div>
               </div>
 
-              {/* Newsletter */}
               <motion.div
                 whileHover={{ y: -5 }}
                 className="bg-brand-primary p-10 text-white shadow-xl"
@@ -216,14 +285,36 @@ const BlogDetail = () => {
                 <h3 className="text-2xl font-bold uppercase tracking-tighter mb-4 leading-none">
                   Subscribe to the <br />ATS Report
                 </h3>
-                <p className="text-sm text-blue-100 mb-8 opacity-80">
+
+                <p className="text-sm text-blue-100 mb-6 opacity-80">
                   Join 15,000+ logistics professionals...
                 </p>
+
                 <div className="space-y-3">
-                  <input type="email" placeholder="Email address" className="w-full bg-white/10 border border-white/20 p-4 text-sm outline-none focus:bg-white/20" />
-                  <button className="w-full bg-brand-dark text-white text-xs font-black uppercase tracking-widest py-4 hover:bg-brand-accent transition-all">
-                    Get Access
+                  {/* Email Input */}
+                  <input
+                    type="email"
+                    placeholder="Email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full bg-white/10 border border-white/20 p-4 text-sm outline-none focus:bg-white/20"
+                  />
+
+                  {/* Button */}
+                  <button
+                    onClick={handleSubscribe}
+                    disabled={loading}
+                    className="w-full bg-brand-dark text-white text-xs font-black uppercase tracking-widest py-4 hover:bg-brand-accent transition-all disabled:opacity-50"
+                  >
+                    {loading ? "Submitting..." : "Get Access"}
                   </button>
+
+                  {/* Message */}
+                  {message && (
+                    <p className={`text-sm mt-2 ${isError ? "text-red-300" : "text-green-300"}`}>
+                      {message}
+                    </p>
+                  )}
                 </div>
               </motion.div>
 

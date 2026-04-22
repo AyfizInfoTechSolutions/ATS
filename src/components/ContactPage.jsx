@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FiPhone, FiMail, FiMapPin, FiSend } from "react-icons/fi";
 import PageBanner from "./common/PageBanner";
 import portImg from "../assets/port.jpeg";
+
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   show: (i = 1) => ({
@@ -16,7 +17,16 @@ const fadeUp = {
   }),
 };
 
-const InputField = ({ label, type = "text", placeholder, isTextArea, colSpan = "md:col-span-1" }) => (
+// ✅ Updated InputField (added value + onChange)
+const InputField = ({
+  label,
+  type = "text",
+  placeholder,
+  isTextArea,
+  colSpan = "md:col-span-1",
+  value,
+  onChange,
+}) => (
   <motion.div
     variants={fadeUp}
     initial="hidden"
@@ -27,10 +37,13 @@ const InputField = ({ label, type = "text", placeholder, isTextArea, colSpan = "
     <label className="text-[10px] uppercase font-black tracking-[0.3em] text-brand-primary">
       {label}
     </label>
+
     {isTextArea ? (
       <textarea
         rows="4"
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
         className="w-full bg-white border border-gray-200 px-6 py-4 
         focus:border-brand-primary transition-all outline-none text-brand-dark resize-none font-medium placeholder:text-gray-300"
       />
@@ -38,6 +51,8 @@ const InputField = ({ label, type = "text", placeholder, isTextArea, colSpan = "
       <input
         type={type}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
         className="w-full bg-white border border-gray-200 px-6 py-4 
         focus:border-brand-primary transition-all outline-none text-brand-dark font-medium placeholder:text-gray-300"
       />
@@ -46,6 +61,119 @@ const InputField = ({ label, type = "text", placeholder, isTextArea, colSpan = "
 );
 
 const ContactPage = () => {
+  // ✅ Form State
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState({
+    name: "",
+    phone: "",
+    email: "",
+  });
+
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  // ✅ Handle Input Change
+  const handleChange = (field) => (e) => {
+    setFormData({ ...formData, [field]: e.target.value });
+  };
+
+  // ✅ Handle Submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    let newErrors = {
+      name: "",
+      phone: "",
+      email: "",
+    };
+
+    setSuccessMessage("");
+    setErrorMessage("");
+
+    // ✅ NAME VALIDATION
+    if (!formData.name) {
+      newErrors.name = "Full name is required";
+    } else if (formData.name.length > 30) {
+      newErrors.name = "Name must be less than 30 characters";
+    }
+
+    // ✅ PHONE VALIDATION
+    const phoneRegex = /^[0-9]+$/;
+
+    if (!formData.phone) {
+      newErrors.phone = "Phone number is required";
+    } else if (!phoneRegex.test(formData.phone)) {
+      newErrors.phone = "Only numbers allowed";
+    } else if (formData.phone.length < 8 || formData.phone.length > 12) {
+      newErrors.phone = "Phone must be 8–12 digits";
+    }
+
+    // ✅ EMAIL VALIDATION
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!formData.email) {
+      newErrors.email = "Email is required";
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = "Enter valid email";
+    }
+
+    setErrors(newErrors);
+
+    if (newErrors.name || newErrors.phone || newErrors.email) return;
+
+    try {
+      const response = await fetch(
+        "https://demo.ayfiz.com/ayfiz/api/ayfiz-it/contact-us",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            message: `${formData.subject} - ${formData.message}`,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSuccessMessage("Message sent successfully!");
+
+        setTimeout(() => setSuccessMessage(""), 2500);
+
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+
+        setErrors({
+          name: "",
+          phone: "",
+          email: "",
+        });
+      } else {
+        setErrorMessage(data.message || "Something went wrong");
+        setTimeout(() => setErrorMessage(""), 2500);
+      }
+    } catch (error) {
+      setErrorMessage("Failed to submit form");
+      setTimeout(() => setErrorMessage(""), 2500);
+    }
+  };
+
   const contactInfo = [
     {
       icon: <FiPhone />,
@@ -146,13 +274,17 @@ const ContactPage = () => {
                       {info.title}
                     </h3>
                     {info.link ? (
-                      <a href={info.link} className="text-2xl  [@media(max-width:768px)]:text-xl font-bold text-brand-dark hover:text-brand-primary transition-all block uppercase tracking-tight">
+                      <a href={info.link} className="text-2xl [@media(max-width:768px)]:text-xl font-bold text-brand-dark hover:text-brand-primary transition-all block uppercase tracking-tight">
                         {info.details}
                       </a>
                     ) : (
-                      <p className="text-2xl font-bold text-brand-dark uppercase tracking-tight">{info.details}</p>
+                      <p className="text-2xl font-bold text-brand-dark uppercase tracking-tight">
+                        {info.details}
+                      </p>
                     )}
-                    <p className="text-gray-400 font-medium text-sm mt-1 uppercase tracking-widest">{info.sub}</p>
+                    <p className="text-gray-400 font-medium text-sm mt-1 uppercase tracking-widest">
+                      {info.sub}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -193,29 +325,118 @@ const ContactPage = () => {
                 <div className="h-1 w-20 bg-brand-accent" />
               </motion.div>
 
-              <form className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10">
-                <InputField label="Full Name" placeholder="ENTER NAME" />
-                <InputField label="Operational Phone" type="tel" placeholder="+1 (000) 000-0000" />
-                <InputField label="Email Address" type="email" placeholder="EMAIL@DOMAIN.COM" />
-                <InputField label="Inquiry Subject" placeholder="LOGISTICS / SOURCING" />
-                <InputField
-                  label="Mission Requirements"
-                  placeholder="PROVIDE DETAILED PROJECT SCOPE..."
-                  isTextArea
-                  colSpan="md:col-span-2"
-                />
+              {/* ✅ FORM */}
+              <form
+  onSubmit={handleSubmit}
+  className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10"
+>
+  {/* NAME */}
+  <div className="flex flex-col">
+    <InputField
+      label="Full Name"
+      placeholder="ENTER NAME"
+      value={formData.name}
+      onChange={(e) => {
+        handleChange("name")(e);
+        if (e.target.value) {
+          setErrors((prev) => ({ ...prev, name: "" }));
+        }
+      }}
+    />
+    {errors.name && (
+      <p className="text-red-500 text-xs mt-2">{errors.name}</p>
+    )}
+  </div>
 
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="md:col-span-2 border-2 border-brand-dark text-brand-dark font-black py-6 
-                  transition-all duration-300 flex items-center justify-center gap-4 mt-6 
-                  uppercase tracking-[0.3em] text-xs"
-                >
-                  <span>Transmit Message</span>
-                  <FiSend className="text-lg" />
-                </motion.button>
-              </form>
+  {/* PHONE */}
+  <div className="flex flex-col">
+    <InputField
+      label="Operational Phone"
+      type="tel"
+      placeholder="+1 (000) 000-0000"
+      value={formData.phone}
+      onChange={(e) => {
+        const value = e.target.value;
+
+        if (/^[0-9]*$/.test(value)) {
+          handleChange("phone")(e);
+
+          if (value) {
+            setErrors((prev) => ({ ...prev, phone: "" }));
+          }
+        }
+      }}
+    />
+    {errors.phone && (
+      <p className="text-red-500 text-xs mt-2">{errors.phone}</p>
+    )}
+  </div>
+
+  {/* EMAIL */}
+  <div className="flex flex-col">
+    <InputField
+      label="Email Address"
+      type="email"
+      placeholder="EMAIL@DOMAIN.COM"
+      value={formData.email}
+      onChange={(e) => {
+        handleChange("email")(e);
+
+        if (e.target.value) {
+          setErrors((prev) => ({ ...prev, email: "" }));
+        }
+      }}
+    />
+    {errors.email && (
+      <p className="text-red-500 text-xs mt-2">{errors.email}</p>
+    )}
+  </div>
+
+  {/* SUBJECT */}
+  <InputField
+    label="Inquiry Subject"
+    placeholder="LOGISTICS / SOURCING"
+    value={formData.subject}
+    onChange={handleChange("subject")}
+  />
+
+  {/* MESSAGE */}
+  <div className="md:col-span-2 flex flex-col">
+    <InputField
+      label="Mission Requirements"
+      placeholder="PROVIDE DETAILED PROJECT SCOPE..."
+      isTextArea
+      colSpan="md:col-span-2"
+      value={formData.message}
+      onChange={handleChange("message")}
+    />
+  </div>
+
+  {/* SUCCESS / ERROR */}
+  {successMessage && (
+    <p className="md:col-span-2 text-green-600 text-sm text-center">
+      {successMessage}
+    </p>
+  )}
+
+  {errorMessage && (
+    <p className="md:col-span-2 text-red-600 text-sm text-center">
+      {errorMessage}
+    </p>
+  )}
+
+  <motion.button
+    type="submit"
+    whileHover={{ scale: 1.03 }}
+    whileTap={{ scale: 0.97 }}
+    className="md:col-span-2 border-2 border-brand-dark text-brand-dark font-black py-6 
+    transition-all duration-300 flex items-center justify-center gap-4 mt-6 
+    uppercase tracking-[0.3em] text-xs"
+  >
+    <span>Transmit Message</span>
+    <FiSend className="text-lg" />
+  </motion.button>
+</form>
 
               <p className="text-[10px] font-bold text-gray-300 uppercase tracking-widest mt-12 text-center">
                 Real-Time Tracking.

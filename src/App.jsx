@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 
 // Layout & Global Components
-import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Navbar from './components/Navbar';
 
 
 // Pages
-import HomePage from "./components/HomePage";
 import AboutPage from "./components/AboutPage";
-import ServicesPage from "./components/ServicesPage";
-import ProductsPage from "./components/ProductsPage";
-import ContactPage from "./components/ContactPage";
-import BlogListing from './components/BlogListing';
 import BlogDetail from './components/BlogDetail';
-import ScrollToTop from './components/common/ScrollToTop';
+import BlogListing from './components/BlogListing';
 import LoadingPage from './components/common/LoadingPage';
 import NotFound from './components/common/NotFound';
-import Terms from './pages/Terms';
-import Privacy from './pages/Privacy';
+import ScrollToTop from './components/common/ScrollToTop';
+import ContactPage from "./components/ContactPage";
+import HomePage from "./components/HomePage";
+import ProductsPage from "./components/ProductsPage";
+import ServicesPage from "./components/ServicesPage";
 import Faqs from './pages/Faqs';
+import Privacy from './pages/Privacy';
 import Support from './pages/Support';
+import Terms from './pages/Terms';
 
 // A small wrapper to handle "Scroll to top on Route Change"
 const ScrollReset = () => {

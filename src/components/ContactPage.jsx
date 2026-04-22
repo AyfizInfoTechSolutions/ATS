@@ -425,7 +425,6 @@ const ContactPage = () => {
     </p>
   )}
 
-  {/* BUTTON */}
   <motion.button
     type="submit"
     whileHover={{ scale: 1.03 }}

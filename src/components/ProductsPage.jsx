@@ -1,6 +1,32 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PageBanner from "./common/PageBanner";
+import tomato from "../assets/productImgs/tomato.jpg";
+import potato from "../assets/productImgs/potato.jpg";
+import onion from "../assets/productImgs/onion.jpg";
+import ladiesFinger from "../assets/productImgs/ladiesFinger.jpg";
+import drumstick from "../assets/productImgs/drumstick.webp";
+import cucumber from "../assets/productImgs/cucumber.jpg";
+import cauliflower from "../assets/productImgs/cauliflower.jpg";
+import garlic from "../assets/productImgs/garlic.jpg";
+import capsicum from "../assets/productImgs/capsicum.jpg";
+import eggplant from "../assets/productImgs/eggplant.jpg";
+import carrot from "../assets/productImgs/carrot.jpg";
+import apple from "../assets/productImgs/apple.jpg";
+import pineapple from "../assets/productImgs/pineapple.jpg";
+import grapes from "../assets/productImgs/grapes.jpg";
+import orange from "../assets/productImgs/orange.jpg";
+import mango from "../assets/productImgs/mango.jpg";
+import rambutan from "../assets/productImgs/rambutan.jpg";
+import dragonfruit from "../assets/productImgs/dragonfruit.jpg";
+import kiwi from "../assets/productImgs/kiwi.jpg";
+import watermelon from "../assets/productImgs/watermelon.jpg";
+import chilly from "../assets/productImgs/chilly.jpg";
+import blackPepper from "../assets/productImgs/pepper.jpg";
+import bitumen from "../assets/productImgs/bitumen.jpg";
+import granite from "../assets/productImgs/granite.jpg";
+import prawns from "../assets/productImgs/prawns.jpg";
+import rice from "../assets/productImgs/rice.jpg";
 
 const categories = [
   "All Product",
@@ -10,8 +36,7 @@ const categories = [
   "Spices",
   "Petrol Chemicals",
   "Mining products",
-  "Frozen Foods",
-  "Other",
+  "Frozen Foods"
 ];
 
 const productsData = [
@@ -19,131 +44,136 @@ const productsData = [
   {
     name: "Tomato",
     category: "Vegetables",
-    img: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?q=80&w=600",
+    img: tomato,
   },
   {
     name: "Potato",
     category: "Vegetables",
-    img: "https://images.unsplash.com/photo-1518977676601-b53f02ac6d31?q=80&w=600",
+    img: potato,
   },
   {
     name: "Onion",
     category: "Vegetables",
-    img: "https://images.unsplash.com/photo-1508747703725-719777637510?q=80&w=600",
+    img: onion,
   },
   {
     name: "Ladies Finger",
     category: "Vegetables",
-    img: "https://images.unsplash.com/photo-1464454709131-ffd692591ee5?q=80&w=600",
+    img: ladiesFinger,
   },
   {
     name: "Drumstick",
     category: "Vegetables",
-    img: "https://images.unsplash.com/photo-1594282486552-05b4d80fbb9f?q=80&w=600",
+    img: drumstick,
   },
   {
     name: "Cucumber",
     category: "Vegetables",
-    img: "https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?q=80&w=600",
+    img: cucumber,
   },
   {
     name: "Cauliflower",
     category: "Vegetables",
-    img: "https://images.unsplash.com/photo-1568584711075-3d021a7c3ca3?q=80&w=600",
+    img: cauliflower,
   },
   {
     name: "Garlic",
     category: "Vegetables",
-    img: "https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?q=80&w=600",
+    img: garlic,
   },
   {
     name: "Capsicum",
     category: "Vegetables",
-    img: "https://images.unsplash.com/photo-1563565038-a5339f058da1?q=80&w=600",
+    img: capsicum,
   },
   {
     name: "Eggplant",
     category: "Vegetables",
-    img: "https://images.unsplash.com/photo-1623150502742-6a849aa94be4?q=80&w=600",
+    img: eggplant,
   },
   {
     name: "Carrot",
     category: "Vegetables",
-    img: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?q=80&w=600",
+    img: carrot,
   },
 
   // Fruits
   {
     name: "Apple",
     category: "Fruits",
-    img: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?q=80&w=600",
+    img: apple,
   },
   {
     name: "Pineapple",
     category: "Fruits",
-    img: "https://images.unsplash.com/photo-1550258114-b8307ba9190b?q=80&w=600",
+    img: pineapple,
   },
   {
     name: "Grapes",
     category: "Fruits",
-    img: "https://images.unsplash.com/photo-1533616688419-b7a585564566?q=80&w=600",
+    img: grapes
   },
   {
     name: "Orange",
     category: "Fruits",
-    img: "https://images.unsplash.com/photo-1547514701-42782101795e?q=80&w=600",
+    img: orange,
   },
   {
     name: "Mango",
     category: "Fruits",
-    img: "https://images.unsplash.com/photo-1553279768-865429fa0078?q=80&w=600",
+    img: mango,
   },
   {
     name: "Rambutan",
     category: "Fruits",
-    img: "https://images.unsplash.com/photo-1590005354167-6da97870c91d?q=80&w=600",
+    img: rambutan,
   },
   {
     name: "Dragon fruit",
     category: "Fruits",
-    img: "https://images.unsplash.com/photo-1527325241048-218156277ca7?q=80&w=600",
+    img: dragonfruit,
   },
   {
     name: "Kiwi",
     category: "Fruits",
-    img: "https://images.unsplash.com/photo-1585059895524-72359e061381?q=80&w=600",
+    img: kiwi,
   },
   {
     name: "Watermelon",
     category: "Fruits",
-    img: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?q=80&w=600",
+    img: watermelon,
   },
 
   // Spices & Others
   {
     name: "Chilly",
     category: "Spices",
-    img: "https://images.unsplash.com/photo-1518933165971-611dbc9c412d?q=80&w=600",
+    img: chilly,
   },
   {
     name: "Black Pepper",
     category: "Spices",
-    img: "https://images.unsplash.com/photo-1532336414038-cf19250c5757?q=80&w=600",
+    img: blackPepper,
   },
   {
     name: "Bitumen",
     category: "Petrol Chemicals",
-    img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=600",
+    img: bitumen,
   },
   {
     name: "Granite",
     category: "Mining products",
-    img: "https://images.unsplash.com/photo-1601662528567-526cd06f6582?q=80&w=600",
+    img: granite,
   },
   {
     name: "Prawns",
     category: "Frozen Foods",
-    img: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?q=80&w=600",
+    img: prawns,
+  },
+  {
+    name: "Rice",
+    category: "Other",
+    img: rice,
   },
 ];
 

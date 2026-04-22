@@ -50,16 +50,16 @@ const ContactPage = () => {
     {
       icon: <FiPhone />,
       title: "Voice Terminal",
-      details: "+91 85929 10000",
+      details: ["+91 484 4533062"],
       sub: "Mon-Fri / 09:00 - 18:00",
-      link: "tel:+918592910000",
+      link: ["+91 484 4533062"],
     },
     {
       icon: <FiMail />,
       title: "Digital Dispatch",
-      details: "info@mychus.com",
+      details: "info@ayfiz.com",
       sub: "Response within 24 business hours",
-      link: "mailto:info@mychus.com",
+      link: "mailto:info@ayfiz.com",
     },
     {
       icon: <FiMapPin />,
@@ -103,8 +103,8 @@ const ContactPage = () => {
               viewport={{ once: true }}
               className="text-5xl md:text-8xl  [@media(max-width:768px)]:text-5xl font-bold tracking-tighter uppercase leading-[0.9] mb-8"
             >
-              Bridge The <br />
-              <span className="text-brand-primary italic">Global Gap.</span>
+              Closing Distances. <br />
+              <span className="text-brand-primary italic">Enabling Trade.</span>
             </motion.h1>
 
             <motion.p
@@ -114,7 +114,7 @@ const ContactPage = () => {
               viewport={{ once: true }}
               className="text-xl text-gray-500 font-medium max-w-2xl border-l-4 border-brand-accent pl-8 leading-relaxed"
             >
-              Whether you're scaling logistics or securing global sourcing, our strategic analysts are ready to integrate your requirements.
+              Smart logistics and global sourcing solutions, tailored to your business vision.
             </motion.p>
           </div>
         </div>
@@ -166,7 +166,7 @@ const ContactPage = () => {
                 className="relative h-64 w-full bg-gray-200 mt-12 overflow-hidden border border-gray-200"
               >
                 <img
-                src={portImg} 
+                  src={portImg}
                   alt="Logistics"
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-110"
                 />
@@ -188,7 +188,7 @@ const ContactPage = () => {
                 className="mb-12"
               >
                 <h2 className="text-3xl font-bold text-brand-dark uppercase tracking-tighter mb-4">
-                  Initiate Inquiry
+                  Initiate Enquiry
                 </h2>
                 <div className="h-1 w-20 bg-brand-accent" />
               </motion.div>
@@ -218,7 +218,8 @@ const ContactPage = () => {
               </form>
 
               <p className="text-[10px] font-bold text-gray-300 uppercase tracking-widest mt-12 text-center">
-                Automated Tracking System Enabled • Privacy Protocol v4.0
+                Real-Time Tracking.
+                Total Transparency
               </p>
             </div>
           </div>

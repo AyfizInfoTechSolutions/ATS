@@ -60,7 +60,7 @@ const PageBanner = ({ title = "Page Title", path = "Home" }) => {
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
-                className={`inline-block text-6xl md:text-8xl [@media(max-width:768px)]:text-5xl lg:text-[9rem] font-black leading-none tracking-tighter ${
+                className={`inline-block text-6xl md:text-7xl [@media(max-width:768px)]:text-3xl  [@media(max-width:1028px)_and_(min-width:801px)]:text-8xl lg:text-[8rem] font-black leading-none tracking-tighter ${
                   index === 0 ? "text-brand-primary" : "text-white"
                 }`}
               >

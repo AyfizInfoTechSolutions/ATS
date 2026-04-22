@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import PageBanner from "./common/PageBanner";
 import tomato from "../assets/productImgs/tomato.jpg";
 import potato from "../assets/productImgs/potato.jpg";
@@ -178,6 +179,7 @@ const productsData = [
 ];
 
 const ProductsPage = () => {
+   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState("All Product");
 
   const filteredProducts =
@@ -187,7 +189,7 @@ const ProductsPage = () => {
 
   return (
     <main className="bg-white min-h-screen pt-24 overflow-x-hidden relative">
-      <PageBanner title="INVENTORY" path="Home" />
+      <PageBanner title="TRADE PORTFOLIO" path="Home" />
 
       {/* --- INDUSTRIAL HEADER (Matches Site Identity) --- */}
       <section className="max-w-8xl px-16 [@media(max-width:768px)]:px-4  mx-auto border-x border-gray-100">
@@ -205,7 +207,7 @@ const ProductsPage = () => {
             </motion.div>
 
             <h2 className="text-6xl [@media(max-width:768px)]:text-5xl md:text-[110px] font-bold uppercase tracking-tighter leading-[0.8] text-brand-dark">
-              CHECK OUR <br />
+              EXPLORE OUR <br />
               <span className="text-brand-primary italic">PRODUCTS</span>
             </h2>
           </div>
@@ -301,15 +303,14 @@ const ProductsPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-8 text-brand-dark"
           >
-            Don't see{" "}
+           Can’t find{" "}
             <span className="text-brand-accent italic">your product?</span>
           </motion.h2>
           <p className="text-xl text-gray-500 font-bold uppercase tracking-widest mb-12 max-w-3xl mx-auto leading-relaxed">
-            Our global sourcing engine is running 24/7. Contact us now for
-            custom procurement of any industrial or agricultural commodity.
+           Our global sourcing engine operates 24/7. Get in touch for custom procurement across industrial and agricultural commodities.
           </p>
 
-          <button className="relative group overflow-hidden bg-brand-primary px-20 py-7 rounded-full shadow-2xl hover:shadow-brand-accent/40 transition-all duration-500 active:scale-95">
+          <button   onClick={() => navigate("/contact")} className="relative group overflow-hidden bg-brand-primary px-20 py-7 rounded-full shadow-2xl hover:shadow-brand-accent/40 transition-all duration-500 active:scale-95">
             <span className="relative z-10 text-white font-black uppercase tracking-[0.4em] text-sm">
               Enquiry Now
             </span>

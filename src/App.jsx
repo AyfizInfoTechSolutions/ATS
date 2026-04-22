@@ -18,6 +18,10 @@ import BlogDetail from './components/BlogDetail';
 import ScrollToTop from './components/common/ScrollToTop';
 import LoadingPage from './components/common/LoadingPage';
 import NotFound from './components/common/NotFound';
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
+import Faqs from './pages/Faqs';
+import Support from './pages/Support';
 
 // A small wrapper to handle "Scroll to top on Route Change"
 const ScrollReset = () => {
@@ -42,15 +46,15 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollReset />
-      <ScrollToTop/>
-      
+      <ScrollToTop />
+
       <AnimatePresence mode="wait">
         {loading ? (
           <LoadingPage key="loader" />
         ) : (
           <div className="min-h-screen bg-white selection:bg-brand-primary selection:text-white">
             <Navbar />
-            
+
             <main>
               <Routes>
                 <Route path="/" element={<HomePage />} />
@@ -58,11 +62,14 @@ function App() {
                 <Route path="/services" element={<ServicesPage />} />
                 <Route path="/products" element={<ProductsPage />} />
                 <Route path="/contact" element={<ContactPage />} />
-                
+
                 {/* Blog Routes */}
                 <Route path="/blog" element={<BlogListing />} />
                 <Route path="/blog/:id" element={<BlogDetail />} />
-
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/faqs" element={<Faqs />} />
+                <Route path="/support" element={<Support />} />
                 {/* 404 Route - This catches everything else */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

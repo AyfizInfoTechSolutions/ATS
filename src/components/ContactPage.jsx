@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FiPhone, FiMail, FiMapPin, FiSend } from "react-icons/fi";
 import PageBanner from "./common/PageBanner";
-
+import portImg from "../assets/port.jpeg";
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   show: (i = 1) => ({
@@ -123,7 +123,7 @@ const ContactPage = () => {
       {/* Main */}
       <section className="max-w-8xl mx-auto border-x border-gray-100">
         <div className="grid grid-cols-1 lg:grid-cols-12">
-          
+
           {/* Left */}
           <div className="lg:col-span-5 bg-gray-50 p-10 lg:p-20 border-r border-gray-200">
             <div className="space-y-16">
@@ -165,9 +165,9 @@ const ContactPage = () => {
                 viewport={{ once: true }}
                 className="relative h-64 w-full bg-gray-200 mt-12 overflow-hidden border border-gray-200"
               >
-                <img 
-                  src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1000" 
-                  alt="Logistics" 
+                <img
+                src={portImg} 
+                  alt="Logistics"
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-110"
                 />
                 <div className="absolute inset-0 bg-brand-primary/10 transition-all" />

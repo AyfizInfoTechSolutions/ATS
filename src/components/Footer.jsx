@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import {
   FaFacebookF,
@@ -12,10 +13,21 @@ import { FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  // ✅ Updated links with routes
   const footerLinks = {
-    "Quick Links": ["Home", "About Company", "Our Services", "Products", "Blog"],
-    "Support": ["Terms & Conditions", "Privacy Policy", "FAQs", "Support Center"],
-   
+    "Quick Links": [
+      { name: "Home", path: "/" },
+      { name: "About Company", path: "/about" },
+      { name: "Our Services", path: "/services" },
+      { name: "Products", path: "/products" },
+      { name: "Blog", path: "/blog" },
+    ],
+    "Support": [
+      { name: "Terms & Conditions", path: "/terms" },
+      { name: "Privacy Policy", path: "/privacy" },
+      { name: "FAQs", path: "/faqs" },
+      { name: "Support Center", path: "/support" },
+    ],
   };
 
   const socialLinks = [
@@ -46,7 +58,6 @@ const Footer = () => {
             whileInView={{ opacity: 1 }}
             className="lg:col-span-5 p-10 lg:p-20 border-r border-b lg:border-b-0 border-white/10"
           >
-            {/* ACCENT LINE ABOVE LOGO */}
             <div className="w-20 h-1 bg-brand-accent mb-10 -mt-8" /> 
             
             <img
@@ -54,12 +65,16 @@ const Footer = () => {
               alt="Ayfiz"
               className="h-36 w-auto object-contain brightness-0 invert -mb-4 -mt-12"
             />
+
             <p className="text-slate-400 text-xl font-bold uppercase tracking-tight leading-tight max-w-sm mb-12">
               Empowering Global <br />
-              <span className="text-brand-accent">Trade Solutions</span> for Seamless International Success.
+              <span className="text-brand-accent">
+                Trade Solutions
+              </span>{" "}
+              for Seamless International Success.
             </p>
 
-            {/* ACCENT SOCIAL HOVERS */}
+            {/* SOCIAL */}
             <div className="flex gap-0">
               {socialLinks.map((social, idx) => (
                 <a
@@ -75,25 +90,26 @@ const Footer = () => {
             </div>
           </motion.div>
 
+          {/* LINKS */}
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3">
-            {Object.entries(footerLinks).map(([title, links], index) => (
+            {Object.entries(footerLinks).map(([title, links]) => (
               <div
                 key={title}
                 className="p-10 border-b lg:border-b-0 border-r border-white/10 group"
               >
-                {/* ACCENT DOTS ON TITLES */}
                 <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-primary mb-10 flex items-center gap-3">
                   <span className="w-1.5 h-1.5 bg-brand-accent" /> {title}
                 </h4>
+
                 <ul className="space-y-4">
                   {links.map((link) => (
-                    <li key={link}>
-                      <a
-                        href="#"
+                    <li key={link.name}>
+                      <Link
+                        to={link.path}
                         className="text-slate-400 hover:text-brand-accent uppercase tracking-widest text-[11px] font-bold transition-all block"
                       >
-                        {link}
-                      </a>
+                        {link.name}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -102,34 +118,60 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* CONTACT BAR WITH ACCENT INTERACTION */}
+        {/* CONTACT BAR */}
         <div className="grid grid-cols-1 lg:grid-cols-2 border-t-2 border-brand-accent">
-            <div className="p-10 flex flex-col sm:flex-row justify-between items-center border-r border-white/10 hover:bg-brand-accent/5 transition-colors group">
-                <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2 sm:mb-0 group-hover:text-brand-accent">Mail us:</span>
-                <a href="mailto:info@ayfiz.com" className="text-2xl font-bold tracking-tighter hover:text-brand-accent">INFO@AYFIZ.COM</a>
-            </div>
-            <div className="p-10 flex flex-col sm:flex-row justify-between items-center hover:bg-brand-accent/5 transition-colors group">
-                <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2 sm:mb-0 group-hover:text-brand-accent">Support:</span>
-                <a href="tel:+918592910000" className="text-2xl font-bold tracking-tighter hover:text-brand-accent">+91 85929 10000</a>
-            </div>
+          <div className="p-10 flex flex-col sm:flex-row justify-between items-center border-r border-white/10 hover:bg-brand-accent/5 transition-colors group">
+            <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2 sm:mb-0 group-hover:text-brand-accent">
+              Mail us:
+            </span>
+            <a
+              href="mailto:info@ayfiz.com"
+              className="text-2xl font-bold tracking-tighter hover:text-brand-accent"
+            >
+              INFO@AYFIZ.COM
+            </a>
+          </div>
+
+          <div className="p-10 flex flex-col sm:flex-row justify-between items-center hover:bg-brand-accent/5 transition-colors group">
+            <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2 sm:mb-0 group-hover:text-brand-accent">
+              Support:
+            </span>
+            <a
+              href="tel:+918592910000"
+              className="text-2xl font-bold tracking-tighter hover:text-brand-accent"
+            >
+              +91 85929 10000
+            </a>
+          </div>
         </div>
 
         {/* BOTTOM BAR */}
         <div className="border-t border-white/10 p-10 flex flex-col lg:flex-row justify-between items-center gap-8 bg-[#0a0a0a]">
           <div className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
-            © {currentYear} <span className="text-white">Ayfiz Absolutes</span> <span className="text-brand-accent mx-2">//</span> Crafted for Excellence.
+            © {currentYear}{" "}
+            <span className="text-white">Ayfiz Absolutes</span>{" "}
+            <span className="text-brand-accent mx-2">//</span> Crafted for Excellence.
           </div>
 
           <div className="flex flex-wrap justify-center gap-8">
-            {["Privacy Policy", "Terms of Service", "Cookies"].map((legal) => (
-              <a
-                key={legal}
-                href="#"
-                className="text-[10px] uppercase tracking-widest text-slate-500 hover:text-brand-accent transition-colors font-bold"
-              >
-                {legal}
-              </a>
-            ))}
+            <Link
+              to="/privacy"
+              className="text-[10px] uppercase tracking-widest text-slate-500 hover:text-brand-accent transition-colors font-bold"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              to="/terms"
+              className="text-[10px] uppercase tracking-widest text-slate-500 hover:text-brand-accent transition-colors font-bold"
+            >
+              Terms of Service
+            </Link>
+            <Link
+              to="/cookies"
+              className="text-[10px] uppercase tracking-widest text-slate-500 hover:text-brand-accent transition-colors font-bold"
+            >
+              Cookies
+            </Link>
           </div>
         </div>
       </div>

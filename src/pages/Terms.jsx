@@ -6,22 +6,22 @@ const Terms = () => {
     {
       id: "01",
       title: "Agreement of Terms",
-      content: "Welcome to Ayfiz Absolutes. By accessing our website, you agree to comply with and be bound by the following terms and conditions. These terms govern your relationship with Ayfiz Brand Studio and all associated entities."
+      content: "Welcome to Ayfiz Trade Services. By accessing and using this website, you agree to comply with and be bound by the following terms and conditions. These terms govern your relationship with Ayfiz Trade Services and its associated entities."
     },
     {
       id: "02",
       title: "Intellectual Property",
-      content: "The content, layout, design, data, and graphics on this website are protected by international copyright laws. Unauthorized use of this website may give rise to a claim for damages and/or be a criminal offense."
+      content: "All content on this website—including text, design, graphics, and data—is the property of Ayfiz Trade Services and is protected by applicable copyright and intellectual property laws.Unauthorised use, reproduction, or distribution of this content may result in legal action."
     },
     {
       id: "03",
       title: "Service Modifications",
-      content: "We reserve the right to modify, suspend, or discontinue any aspect of our services or content at any time without prior notice. Global logistics and trade compliance updates may occur frequently."
+      content: "Ayfiz Trade Services reserves the right to modify, suspend, or discontinue any part of its services or website content at any time without prior notice.Such changes may be made to reflect operational updates, regulatory requirements, or improvements to our services."
     },
     {
       id: "04",
       title: "Liability & Compliance",
-      content: "While we strive for 100% accuracy, content is for general information only. Ayfiz provides no guarantee of completeness for third-party market data used in international brokerage."
+      content: "While we strive to ensure accuracy, all content provided is for general informational purposes only. Ayfiz Trade Services does not guarantee the completeness or reliability of third-party data, including market or brokerage-related information.Users are advised to verify critical information independently before making business decisions."
     }
   ];
 
@@ -101,8 +101,8 @@ const Terms = () => {
             {/* TECHNICAL FOOTNOTE */}
             <div className="p-10 bg-gray-50 border-l-4 border-brand-dark mt-20">
               <p className="text-xs font-mono text-gray-400 leading-loose uppercase tracking-widest">
-                Any dispute arising out of such use of the website is subject to the laws of the United Arab Emirates and international trade regulations. 
-                Contact <span className="text-brand-accent">legal@ayfiz.com</span> for official inquiries.
+                Any dispute arising from the use of this website shall be governed by the laws of the United Arab Emirates, along with applicable international trade regulations. 
+                Contact <span className="text-brand-accent">legal@ayfiz.com</span> For official legal enquiries.
               </p>
             </div>
           </div>

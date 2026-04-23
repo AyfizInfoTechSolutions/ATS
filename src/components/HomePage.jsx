@@ -350,10 +350,10 @@ const HomePage = () => {
       <section className="max-w-8xl mx-auto border-x border-gray-100 bg-brand-dark text-white">
         <div className="grid grid-cols-2 lg:grid-cols-4">
           {[
-            { label: "Project Completed", value: "1224", icon: "🚀" },
-            { label: "Team Member", value: "30", icon: "👥" },
-            { label: "Years Experience", value: "15", icon: "📅" },
-            { label: "Satisfied Customers", value: "530", icon: "💬" },
+            { label: "Project Completed", value: "1000+", icon: "🚀" },
+            { label: "Team Member", value: "40+", icon: "👥" },
+            { label: "Years Experience", value: "15+", icon: "📅" },
+            { label: "Satisfied Customers", value: "530+", icon: "💬" },
           ].map((stat, idx) => (
             <div
               key={idx}

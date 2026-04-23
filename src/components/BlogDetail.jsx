@@ -72,17 +72,7 @@ const BlogDetail = () => {
 
     fetchData();
   }, [slug]);
-  console.log(post, "blogss-detail");
-  // const post = {
-  //   title: "The Pros And Cons Of Trading in Modern Logistics",
-  //   category: "Logistics Strategy",
-  //   date: "April 14, 2026",
-  //   readTime: "8 min read",
-  //   author: "Sevil Haslak",
-  //   role: "Senior Logistics Strategist",
-  //   image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000"
-  // };
-
+  
   const handleSubscribe = async () => {
     if (!email) {
       setMessage("Please enter your email.");
@@ -147,11 +137,11 @@ const BlogDetail = () => {
   };
 
   const formatMonthYear = (dateString) => {
-  return new Date(dateString).toLocaleDateString("en-US", {
-    month: "long",
-    year: "numeric",
-  });
-};
+    return new Date(dateString).toLocaleDateString("en-US", {
+      month: "long",
+      year: "numeric",
+    });
+  };
   return (
     <div className="bg-white min-h-screen text-brand-dark font-sans antialiased">
       <PageBanner title="BLOG" path="Home" />
@@ -176,7 +166,7 @@ const BlogDetail = () => {
             </Link>
 
             <div className="inline-block bg-brand-primary text-white px-4 py-1 text-[10px] font-black uppercase tracking-widest w-fit mb-6">
-              {post?.category?.[0]}
+              {post?.categories?.[0]}
             </div>
 
             <h1 className="text-4xl  [@media(max-width:768px)]:text-5xl md:text-6xl font-bold tracking-tighter uppercase leading-[0.95] mb-8">
@@ -186,7 +176,7 @@ const BlogDetail = () => {
             <div className="flex items-center gap-6 border-t border-gray-100 pt-8">
               <div className="text-xs font-black uppercase tracking-widest">
                 <p className="text-gray-400 mb-1">Author</p>
-                <p>{post?.author}</p>
+                <p>{post?.author || "Ayfiz Team"}</p>
               </div>
               <div className="h-8 w-px bg-gray-200" />
               <div className="text-xs font-black uppercase tracking-widest">
@@ -264,25 +254,43 @@ const BlogDetail = () => {
                 whileInView={{ opacity: 1 }}
                 transition={{ staggerChildren: 0.2 }}
                 viewport={{ once: true }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-gray-200 my-16"
+                className="border border-gray-200 my-16 p-10"
               >
-                <motion.div variants={fadeUp} className="p-10 border-b md:border-b-0 md:border-r border-gray-200">
-                  <h4 className="font-black text-brand-primary uppercase tracking-[0.2em] text-xs mb-4">Functional Pros</h4>
-                  <ul className="text-sm space-y-3 font-medium">
-                    <li>• Real-time supply chain visibility</li>
-                    <li>• Automated settlement cycles</li>
-                    <li>• Reduced overhead friction</li>
-                  </ul>
-                </motion.div>
+                <h4 className="font-black text-brand-primary uppercase tracking-[0.2em] text-xs mb-6">
+                  Related Blogs
+                </h4>
 
-                <motion.div variants={fadeUp} className="p-10 bg-gray-50">
-                  <h4 className="font-black text-brand-accent uppercase tracking-[0.2em] text-xs mb-4">Structural Cons</h4>
-                  <ul className="text-sm space-y-3 font-medium">
-                    <li>• High initial technical barriers</li>
-                    <li>• Cybersecurity framework requirements</li>
-                    <li>• Rigorous data compliance</li>
-                  </ul>
-                </motion.div>
+                <ul className="text-sm italic space-y-4 font-medium">
+                  {(allBlogs.length > 0
+                    ? (
+                      // 👉 First try: same category
+                      allBlogs.filter(item =>
+                        item.slug !== slug &&
+                        item.categories?.[0] === post?.categories?.[0]
+                      ).length > 0
+
+                        ? allBlogs.filter(item =>
+                          item.slug !== slug &&
+                          item.categories?.[0] === post?.categories?.[0]
+                        )
+
+                        // 👉 Fallback: show any other blogs
+                        : allBlogs.filter(item => item.slug !== slug)
+                    )
+                    : []
+                  )
+                    .slice(0, 6)
+                    .map((item) => (
+                      <motion.li key={item.post_id} variants={fadeUp}>
+                        <Link
+                          to={`/blog/${item.slug}`}
+                          className="hover:text-brand-primary transition-colors"
+                        >
+                          • {item.title}
+                        </Link>
+                      </motion.li>
+                    ))}
+                </ul>
               </motion.div>
             </article>
 
@@ -320,12 +328,12 @@ const BlogDetail = () => {
               <div>
                 <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-accent mb-8 underline underline-offset-8">Analyst Profile</h3>
                 <div className="flex flex-col gap-6">
-                  <div className="w-20 h-20 bg-brand-dark text-white flex items-center justify-center text-3xl font-bold">
+                  {/* <div className="w-20 h-20 bg-brand-dark text-white flex items-center justify-center text-3xl font-bold">
                     {post?.author}
-                    {/* {post.author.charAt(0)} */}
-                  </div>
+                    {post.author.charAt(0)}
+                  </div> */}
                   <div>
-                    <p className="text-xl font-bold uppercase tracking-tight">{post?.author}</p>
+                    <p className="text-xl font-bold uppercase tracking-tight">{post?.author || "Ayfiz Team"}</p>
                     <p className="text-brand-primary font-bold text-xs uppercase tracking-widest mt-1">{post?.role}</p>
                     <p className="text-gray-500 text-sm mt-4 leading-relaxed">
                       Specializing in integrated terminal operations...

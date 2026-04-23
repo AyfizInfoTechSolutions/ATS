@@ -18,37 +18,6 @@ const fadeUp = {
   }),
 };
 
-
-// const posts = [
-//   {
-//     id: 1,
-//     title: "The Pros And Cons Of Trading in Modern Logistics",
-//     category: "Logistics Strategy",
-//     author: "Sevil Haslak",
-//     date: "Apr 14, 2026",
-//     excerpt: "Exploring how integrated ATS protocols are reshaping the way we handle freight volatility and supply chain settlements...",
-//     image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200"
-//   },
-//   {
-//     id: 2,
-//     title: "Implementing AI in Fleet Management",
-//     category: "Tech Trends",
-//     author: "Gazali Oztepe",
-//     date: "Sep 27, 2026",
-//     excerpt: "Artificial intelligence is no longer a luxury. Learn how autonomous routing is saving carriers thousands in fuel costs...",
-//     image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=1200"
-//   },
-//   {
-//     id: 3,
-//     title: "The Future of Cold Chain Solutions",
-//     category: "Solutions",
-//     author: "Gulnaz Dagli",
-//     date: "Aug 28, 2026",
-//     excerpt: "Maintaining integrity in temperature-controlled environments using real-time sensor data and ATS tracking...",
-//     image: "https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&q=80&w=1200"
-//   }
-// ];
-
 const BlogListing = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [email, setEmail] = useState("");
@@ -81,7 +50,6 @@ const BlogListing = () => {
 
     fetchBlogs();
   }, []);
-// console.log(posts,"blogss");
 
   const handleSubscribe = async () => {
     if (!email) {

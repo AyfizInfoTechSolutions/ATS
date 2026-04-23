@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 
@@ -18,42 +18,38 @@ const fadeUp = {
   }),
 };
 
-const posts = [
-  {
-    id: 1,
-    title: "The Pros And Cons Of Trading in Modern Logistics",
-    category: "Logistics Strategy",
-    author: "Sevil Haslak",
-    date: "Apr 14, 2026",
-    excerpt: "Exploring how integrated ATS protocols are reshaping the way we handle freight volatility and supply chain settlements...",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200"
-  },
-  {
-    id: 2,
-    title: "Implementing AI in Fleet Management",
-    category: "Tech Trends",
-    author: "Gazali Oztepe",
-    date: "Sep 27, 2026",
-    excerpt: "Artificial intelligence is no longer a luxury. Learn how autonomous routing is saving carriers thousands in fuel costs...",
-    image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=1200"
-  },
-  {
-    id: 3,
-    title: "The Future of Cold Chain Solutions",
-    category: "Solutions",
-    author: "Gulnaz Dagli",
-    date: "Aug 28, 2026",
-    excerpt: "Maintaining integrity in temperature-controlled environments using real-time sensor data and ATS tracking...",
-    image: "https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&q=80&w=1200"
-  }
-];
-
 const BlogListing = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [posts, setPosts] = useState([]);
+  const [loadingPosts, setLoadingPosts] = useState(true);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_BASE_URL}/ayfiz-trade/blogs`
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setPosts(Array.isArray(data.blogs) ? data.blogs : []);
+        } else {
+          console.error("Failed to fetch blogs");
+        }
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      } finally {
+        setLoadingPosts(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
 
   const handleSubscribe = async () => {
     if (!email) {
@@ -172,7 +168,11 @@ const BlogListing = () => {
 
           {/* Feed */}
           <div className="lg:col-span-8 border-r border-gray-200">
-            {posts.map((post, index) => (
+            {loadingPosts ? (
+              <p className="p-10">Loading blogs...</p>
+            ) : posts.length === 0 ? (
+              <p className="p-10">No blogs found</p>
+            ) : posts.map((post, index) => (
               <motion.article
                 key={post.id}
                 custom={index}
@@ -184,26 +184,26 @@ const BlogListing = () => {
                 className={`group flex flex-col md:flex-row ${index !== posts.length - 1 ? 'border-b border-gray-200' : ''}`}
               >
                 <div className="md:w-1/2 overflow-hidden relative">
-                  <Link to={`/blog/${post.id}`}>
+                  <Link to={`/blog/${post.slug}`}>
                     <img
-                      src={post.image}
+                      src={post.featured_image}
                       alt={post.title}
                       className="w-full h-full min-h-[350px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                     />
                     <div className="absolute top-0 left-0 bg-brand-primary text-white px-4 py-2 text-xs font-black uppercase">
-                      {post.category}
+                      {post.categories}
                     </div>
                   </Link>
                 </div>
 
                 <div className="md:w-1/2 p-10 flex flex-col justify-center bg-white group-hover:bg-brand-soft transition-colors duration-300">
                   <div className="flex items-center gap-4 text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">
-                    <span>{post.date}</span>
+                    <span>{post.publish_date}</span>
                     <span className="h-px w-8 bg-gray-200" />
-                    <span>By {post.author}</span>
+                    <span>By {post.author || "Ayfiz Team"}</span>
                   </div>
 
-                  <Link to={`/blog/${post.id}`}>
+                  <Link to={`/blog/${post.slug}`}>
                     <h2 className="text-3xl  [@media(max-width:768px)]:text-xl font-bold leading-tight mb-6 group-hover:text-brand-primary transition-colors uppercase tracking-tight">
                       {post.title}
                     </h2>
@@ -214,7 +214,7 @@ const BlogListing = () => {
                   </p>
 
                   <Link
-                    to={`/blog/${post.id}`}
+                    to={`/blog/${post.slug}`}
                     className="flex items-center gap-3 text-xs font-black uppercase tracking-widest text-brand-dark group-hover:text-brand-accent transition-colors"
                   >
                     Read Analysis <ArrowRight size={16} strokeWidth={3} />

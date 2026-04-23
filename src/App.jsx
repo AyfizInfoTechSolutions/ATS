@@ -65,7 +65,7 @@ function App() {
 
                 {/* Blog Routes */}
                 <Route path="/blog" element={<BlogListing />} />
-                <Route path="/blog/:id" element={<BlogDetail />} />
+                <Route path="/blog/:slug" element={<BlogDetail />} />
                 <Route path="/terms" element={<Terms />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/faqs" element={<Faqs />} />

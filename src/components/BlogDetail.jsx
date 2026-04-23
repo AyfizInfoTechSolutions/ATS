@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PageBanner from './common/PageBanner';
@@ -28,19 +28,60 @@ const socialmedia = [{
 
 const BlogDetail = () => {
   const { id } = useParams();
+  const { slug } = useParams();
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const post = {
-    title: "The Pros And Cons Of Trading in Modern Logistics",
-    category: "Logistics Strategy",
-    date: "April 14, 2026",
-    readTime: "8 min read",
-    author: "Sevil Haslak",
-    role: "Senior Logistics Strategist",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000"
-  };
+  const [post, setPost] = useState(null);   // single blog
+  const [allBlogs, setAllBlogs] = useState([]); // for sidebar
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // 🔹 Single blog by slug
+        const res1 = await fetch(
+          `${import.meta.env.VITE_API_BASE_URL}/ayfiz-trade/blogs/${slug}`
+        );
+        const data1 = await res1.json();
+
+        console.log("DETAIL API:", data1);
+
+        if (res1.ok) {
+          setPost(data1.blog || data1); // adjust if needed
+        }
+
+        // 🔹 All blogs (for related list)
+        const res2 = await fetch(
+          `${import.meta.env.VITE_API_BASE_URL}/ayfiz-trade/blogs`
+        );
+        const data2 = await res2.json();
+
+        console.log("LIST API:", data2);
+
+        if (res2.ok) {
+          setAllBlogs(Array.isArray(data2.blogs) ? data2.blogs : []);
+        }
+
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoadingPosts(false);
+      }
+    };
+
+    fetchData();
+  }, [slug]);
+  console.log(post, "blogss-detail");
+  // const post = {
+  //   title: "The Pros And Cons Of Trading in Modern Logistics",
+  //   category: "Logistics Strategy",
+  //   date: "April 14, 2026",
+  //   readTime: "8 min read",
+  //   author: "Sevil Haslak",
+  //   role: "Senior Logistics Strategist",
+  //   image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000"
+  // };
 
   const handleSubscribe = async () => {
     if (!email) {
@@ -97,6 +138,20 @@ const BlogDetail = () => {
 
     setLoading(false);
   };
+  const cleanHtmlContent = (html) => {
+    return html
+      ?.replace(/&nbsp;/g, " ")     // remove &nbsp;
+      ?.replace(/<[^>]+>/g, "")     // remove HTML tags
+      ?.replace(/\s+/g, " ")        // remove extra spaces
+      ?.trim();                     // clean start/end spaces
+  };
+
+  const formatMonthYear = (dateString) => {
+  return new Date(dateString).toLocaleDateString("en-US", {
+    month: "long",
+    year: "numeric",
+  });
+};
   return (
     <div className="bg-white min-h-screen text-brand-dark font-sans antialiased">
       <PageBanner title="BLOG" path="Home" />
@@ -121,22 +176,22 @@ const BlogDetail = () => {
             </Link>
 
             <div className="inline-block bg-brand-primary text-white px-4 py-1 text-[10px] font-black uppercase tracking-widest w-fit mb-6">
-              {post.category}
+              {post?.category?.[0]}
             </div>
 
             <h1 className="text-4xl  [@media(max-width:768px)]:text-5xl md:text-6xl font-bold tracking-tighter uppercase leading-[0.95] mb-8">
-              {post.title}
+              {post?.title}
             </h1>
 
             <div className="flex items-center gap-6 border-t border-gray-100 pt-8">
               <div className="text-xs font-black uppercase tracking-widest">
                 <p className="text-gray-400 mb-1">Author</p>
-                <p>{post.author}</p>
+                <p>{post?.author}</p>
               </div>
               <div className="h-8 w-px bg-gray-200" />
               <div className="text-xs font-black uppercase tracking-widest">
                 <p className="text-gray-400 mb-1">Published</p>
-                <p>{post.date}</p>
+                <p>{formatMonthYear(post?.publish_date)}</p>
               </div>
             </div>
           </motion.div>
@@ -150,8 +205,8 @@ const BlogDetail = () => {
             className="lg:w-1/2 relative overflow-hidden order-1 lg:order-2 bg-gray-100"
           >
             <img
-              src={post.image}
-              alt={post.title}
+              src={post?.featured_image}
+              alt={post?.title}
               className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105"
             />
           </motion.div>
@@ -177,7 +232,7 @@ const BlogDetail = () => {
               </p>
 
               <p>
-                In the modern era of freight management...
+                {cleanHtmlContent(post?.content)}
               </p>
 
               <motion.blockquote
@@ -266,11 +321,12 @@ const BlogDetail = () => {
                 <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-accent mb-8 underline underline-offset-8">Analyst Profile</h3>
                 <div className="flex flex-col gap-6">
                   <div className="w-20 h-20 bg-brand-dark text-white flex items-center justify-center text-3xl font-bold">
-                    {post.author.charAt(0)}
+                    {post?.author}
+                    {/* {post.author.charAt(0)} */}
                   </div>
                   <div>
-                    <p className="text-xl font-bold uppercase tracking-tight">{post.author}</p>
-                    <p className="text-brand-primary font-bold text-xs uppercase tracking-widest mt-1">{post.role}</p>
+                    <p className="text-xl font-bold uppercase tracking-tight">{post?.author}</p>
+                    <p className="text-brand-primary font-bold text-xs uppercase tracking-widest mt-1">{post?.role}</p>
                     <p className="text-gray-500 text-sm mt-4 leading-relaxed">
                       Specializing in integrated terminal operations...
                     </p>

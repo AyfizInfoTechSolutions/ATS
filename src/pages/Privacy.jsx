@@ -1,28 +1,31 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FiShield, FiLock, FiEye, FiServer } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 const Privacy = () => {
+    const navigate = useNavigate();
+  
   const policies = [
     {
       icon: <FiEye />,
       title: "Information Collection",
-      content: "We collect basic user information essential for logistics tracking and communication, including names, contact details, and corporate identifiers necessary for international trade compliance."
+      content: "We collect only the information required to manage your trade operations efficiently. This includes basic details such as names, contact information, and company identifiers necessary for communication, logistics tracking, and compliance with international trade regulations."
     },
     {
       icon: <FiLock />,
       title: "Data Protection",
-      content: "Your data is strictly confidential. Ayfiz operates on a zero-share policy; we do not sell or trade your information with third-party marketers. Data is only shared with verified customs and logistics nodes."
+      content: "Your data is handled with strict confidentiality. Ayfiz Trade Services does not sell or share your information with third-party marketers. Data is only shared when required with authorised customs authorities and logistics partners to ensure smooth execution of your shipments."
     },
     {
       icon: <FiServer />,
-      title: "Cookies & Intelligence",
-      content: "We utilize cookies to optimize our technical interfaces and streamline the 'Ayfiz Blueprint' experience. These scripts track performance metrics and system stability across our global network."
+      title: "Cookies & Performance",
+      content: "We use cookies to improve platform performance and user experience. These help us monitor system stability, optimise functionality, and ensure consistent service across our global operations."
     },
     {
       icon: <FiShield />,
       title: "Security Protocols",
-      content: "Utilizing industry-standard encryption, our systems ensure that every interaction—from the Brand Studio to the Absolute Trade Portal—is shielded from unauthorized access."
+      content: "Our systems are protected with industry-standard security measures and encryption. Every interaction is secured to prevent unauthorised access and ensure your data remains protected at all times."
     }
   ];
 
@@ -46,14 +49,14 @@ const Privacy = () => {
               <span className="w-8 h-[1px] bg-brand-accent" /> Privacy Framework
             </motion.p>
             <h1 className="text-6xl md:text-8xl [@media(max-width:768px)]:text-5xl  font-bold uppercase tracking-tighter leading-none">
-              DATA <br />
-              <span className="text-brand-primary italic">INTEGRITY.</span>
+              DATA PROTECTION <br />
+              <span className="text-brand-primary italic">SECURITY.</span>
             </h1>
           </div>
           <div className="lg:text-right">
              <p className="text-gray-400 font-mono text-[10px] uppercase tracking-widest mb-2">Ayfiz Protocol v2.0</p>
              <p className="text-xs text-gray-500 font-medium max-w-sm ml-auto">
-               Ensuring the safety of your corporate assets and personal identifiers through world-class security standards.
+              Protecting your data with clear, reliable security standards.
              </p>
           </div>
         </div>
@@ -89,10 +92,11 @@ const Privacy = () => {
         {/* CONTACT CALLOUT */}
         <div className="mt-20 flex flex-col md:flex-row justify-between items-center p-10 bg-brand-dark text-white gap-8">
            <div>
-              <h4 className="text-xl font-bold uppercase tracking-tighter">Have privacy concerns?</h4>
-              <p className="text-white/50 text-sm font-medium mt-1">Our Data Protection Officer is ready to assist.</p>
+              <h4 className="text-xl font-bold uppercase tracking-tighter">Our Data Protection Officer is ready to assist  -  to -</h4>
+              <p className="text-white/50 text-sm font-medium mt-1">Our team is here to help.</p>
            </div>
            <a 
+             onClick={() => navigate("/contact")}
              href="mailto:info@ayfiz.com" 
              className="px-10 py-5 border border-white/20 text-[10px] font-black uppercase tracking-widest hover:bg-brand-accent hover:border-brand-accent transition-all"
            >

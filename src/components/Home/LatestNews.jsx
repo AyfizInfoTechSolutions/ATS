@@ -46,7 +46,7 @@ const LatestNews = () => {
           </div>
           <h2 className="text-6xl [@media(max-width:768px)]:text-5xl font-bold uppercase tracking-[-0.05em] text-brand-dark leading-[0.85]">
             LATEST <br />
-            <span className="text-brand-primary italic opacity-90">NEWS.</span>
+            <span className="text-brand-primary italic opacity-90">BLOGS.</span>
           </h2>
         </motion.div>
 

@@ -85,15 +85,16 @@ const ServiceDetail = ({ service, onBack }) => {
           </motion.div>
 
           <motion.div variants={itemVariants} className="mt-20 flex flex-col sm:flex-row gap-4">
-            <motion.button 
+            <motion.button
               whileHover={{ y: -4 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => navigate("/contact")}
+
               className="bg-brand-dark text-white px-10 py-5 text-xs font-black uppercase tracking-[0.2em] transition-all"
             >
-            <a href="https://demo.ayfiz.com/ayfiz/api/ayfiz-trade/download-brochure" target="_blank" rel="noopener noreferrer">
-              Request Deployment
-            </a>
+              <a href="https://demo.ayfiz.com/ayfiz/api/ayfiz-trade/download-brochure" target="_blank" rel="noopener noreferrer">
+                Download PDF
+              </a>
+
             </motion.button>
             <motion.button
               whileHover={{ y: -4 }}

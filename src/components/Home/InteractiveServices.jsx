@@ -5,27 +5,27 @@ const InteractiveServices = () => {
   const services = [
   { 
     title: "Integrated Trade Operations", 
-    desc: "Precision in Global Flow. We eliminate the friction of international borders by managing the full lifecycle of import and export mechanics with technical rigour." 
+    desc: "Precision in Global Flow. We manage the full lifecycle of import and export operations, eliminating friction and ensuring smooth, compliant movement across borders." 
   },
   { 
     title: "Strategic Market Broking", 
-    desc: "Asset Access & Alignment. Providing high-fidelity representation across international exchanges to secure assets and manage cross-border transaction settlements." 
+    desc: "Asset Access & Alignment. We provide structured representation across international markets, helping you secure assets and manage cross-border transactions with clarity and control." 
   },
   { 
     title: "Expansion Architecture", 
-    desc: "Intelligence for New Frontiers. Strategic frameworks designed to navigate regulatory landscapes and establish a resilient operational footprint in foreign markets." 
+    desc: "Intelligence for New Markets. We design market entry strategies that navigate regulatory environments and establish a stable, scalable presence in new regions." 
   },
   { 
     title: "Procurement Intelligence", 
-    desc: "Validated Global Sourcing. Engineering resilient supply chains by identifying, vetting, and onboarding high-performance partners that meet absolute quality benchmarks." 
+    desc: "Validated Global Sourcing. We build reliable supply chains by identifying, vetting, and onboarding suppliers who consistently meet your quality and performance standards." 
   },
   { 
     title: "Infrastructure & Velocity", 
-    desc: "Advanced Warehousing & Distribution. Maintaining the momentum of your supply chain through real-time inventory logic and high-speed distribution networks." 
+    desc: "Warehousing & Distribution. We support your supply chain with accurate inventory management and efficient distribution networks that keep operations moving without delay." 
   },
   { 
     title: "Regional Trade Gateway", 
-    desc: "Specialized UAE · KSA · IND · UK. Navigating the critical corridors of the Middle East, Europe, and Asia with native intelligence and methodical precision." 
+    desc: "UAE · KSA · IND · UK. We operate across key trade corridors in the Middle East, Europe, and Asia, combining local expertise with disciplined execution." 
   },
 ];
 
@@ -47,7 +47,7 @@ const InteractiveServices = () => {
             <span className="w-8 h-[1px] bg-brand-accent"></span> // Technical Solutions
           </motion.p>
           <h2 className="text-6xl [@media(max-width:768px)]:text-5xl font-bold uppercase tracking-tighter leading-[0.85]">
-            OUR <span className="text-brand-primary italic">CAPABILITIES.</span>
+            OUR <span className="text-brand-primary italic">TRADE SYSTEM.</span>
           </h2>
         </div>
         <div className="hidden lg:block text-right">

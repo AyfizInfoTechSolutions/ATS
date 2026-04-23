@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiPlus, FiMinus } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 const FaqItem = ({ question, answer, isOpen, onClick }) => {
   return (
@@ -39,25 +40,30 @@ const FaqItem = ({ question, answer, isOpen, onClick }) => {
 
 const Faqs = () => {
   const [openIndex, setOpenIndex] = useState(0);
+  const navigate = useNavigate();
 
-  const faqData = [
-    {
-      question: "What primary sectors does Ayfiz operate in?",
-      answer: "Ayfiz operates at the intersection of global trade, logistics, and brand studio services. We provide end-to-end supply chain solutions across the UAE, KSA, India, and the UK, alongside premium digital asset creation."
-    },
-    {
-      question: "How do you ensure global shipping compliance?",
-      answer: "Our execution blueprint includes rigorous multi-channel feedback loops and real-time performance monitoring. We align with international ISO standards and local trade regulations in every region of operation."
-    },
-    {
-      question: "Can I track my cargo through the Ayfiz portal?",
-      answer: "Yes. Registered partners have access to our 'Absolute Trade Portal' which provides real-time telemetry and status updates for all active international manifests."
-    },
-    {
-      question: "How can I initiate a partnership or project?",
-      answer: "You can reach out via our Support Center or direct email. Our response team typically reviews and initializes trade protocols within 12 hours of the first inquiry."
-    }
-  ];
+const faqData = [
+  {
+    question: "What primary sectors does Ayfiz operate in?",
+    answer:
+      "Ayfiz operates across global trade, logistics, and supply chain management. We deliver end-to-end trade solutions across the UAE, KSA, India, and the UK, combining sourcing, compliance, and execution into one integrated system.",
+  },
+  {
+    question: "How do you ensure global shipping compliance?",
+    answer:
+      "We ensure compliance through strict documentation control, accurate tariff classification, and alignment with international regulations across every trade lane we operate in. Our team manages every requirement proactively, reducing delays and ensuring smooth customs clearance.",
+  },
+  {
+    question: "Can I track my cargo through the Ayfiz portal?",
+    answer:
+      "Yes. Our clients have access to the Ayfiz Trade Portal, where they can track shipments in real time, monitor documentation status, and stay updated at every stage of the process.",
+  },
+  {
+    question: "How can I initiate a partnership or project?",
+    answer:
+      "You can get started by contacting us through our support centre or via email. Our team will review your requirements and respond with a clear next step within 12 hours.",
+  },
+];
 
   return (
     <div className="min-h-screen bg-white text-brand-dark pt-40 pb-20 px-6 lg:px-20 relative overflow-hidden">
@@ -80,13 +86,13 @@ const Faqs = () => {
               <span className="w-8 h-[1px] bg-brand-accent" /> Knowledge Base
             </motion.p>
             <h1 className="text-6xl md:text-8xl [@media(max-width:768px)]:text-5xl  font-bold uppercase tracking-tighter leading-[0.85]">
-              FREQUENT <br />
-              <span className="text-brand-primary italic">INQUIRIES.</span>
+             COMMON <br />
+              <span className="text-brand-primary italic">QUESTIONS.</span>
             </h1>
           </div>
           <div className="lg:col-span-4 lg:pb-4">
             <p className="text-gray-400 font-medium text-sm border-l border-gray-100 pl-8 uppercase tracking-widest leading-loose">
-              Finding clarity in the complexity of global trade and digital excellence.
+            Clarity in global trade, delivered with precision.
             </p>
           </div>
         </div>
@@ -107,12 +113,13 @@ const Faqs = () => {
         {/* BOTTOM CTA */}
         <div className="mt-8 p-16 bg-gray-50 flex flex-col md:flex-row items-center justify-between gap-10 relative overflow-hidden">
           <div className="relative z-10">
-            <h4 className="text-2xl font-bold uppercase tracking-tighter mb-2">Still need assistance?</h4>
-            <p className="text-gray-500 font-medium">Our technical support team is standing by for specialized queries.</p>
+            <h4 className="text-2xl font-bold uppercase tracking-tighter mb-2">Need More Support?</h4>
+            <p className="text-gray-500 font-medium">Our team is ready to assist with your trade and sourcing requirements.</p>
           </div>
           <motion.button 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+             onClick={() => navigate("/contact")}
             className="bg-brand-dark text-white px-12 py-6 text-[10px] font-black uppercase tracking-[0.3em] relative z-10 hover:bg-brand-primary transition-colors"
           >
             Contact Command Center

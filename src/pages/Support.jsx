@@ -112,7 +112,7 @@ const Support = () => {
           <div className="p-12 border border-gray-100 bg-gray-50/50">
             <h5 className="text-lg font-bold uppercase tracking-tight mb-6">Partner Onboarding</h5>
             <p className="text-gray-500 text-sm leading-relaxed mb-8">
-              Interested in becoming an Ayfiz Absolute partner? Start your application process through our dedicated portal.
+            Interested in becoming an Ayfiz Absolute partner? Start your application process through our dedicated portal.
             </p>
             <button className="text-[10px] font-black uppercase tracking-widest text-brand-accent border-b border-brand-accent pb-1">
               Start Application

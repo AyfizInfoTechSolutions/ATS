@@ -7,19 +7,19 @@ const WorkProcessAwesome = () => {
     {
       id: "01",
       title: "Research & Planning",
-      desc: "Thorough market research to identify trends and strategic opportunities tailored to your vertical.",
-      tag: "// Analysis"
+      desc: "We conduct in-depth market research to identify trends and uncover strategic opportunities tailored to your business.",
+      tag: "//Planning"
     },
     {
       id: "02",
       title: "Review & Launch",
-      desc: "Final adjustments based on multi-channel feedback to ensure a polished, risk-free execution.",
+      desc: "We refine the approach through careful evaluation, ensuring a controlled and risk-aware execution before launch.",
       tag: "// Strategy"
     },
     {
       id: "03",
       title: "Implementation",
-      desc: "Executing the plan with high-efficiency resource allocation and constant performance monitoring.",
+      desc: "We execute with disciplined resource allocation and continuous performance monitoring to ensure consistent results.",
       tag: "// Execution"
     },
   ];
@@ -60,7 +60,7 @@ const WorkProcessAwesome = () => {
           
           <div className="lg:pb-4 relative">
             <p className="text-slate-400 text-sm uppercase tracking-widest leading-loose max-w-md border-l-2 border-brand-accent/20 pl-10 font-medium">
-              A structured approach to global logistics ensuring precision at every node of the supply chain.
+            A structured approach to global logistics, ensuring precision at every stage of the supply chain.
             </p>
             {/* Technical Detail */}
             <div className="absolute -bottom-10 right-0 text-[10px] font-mono text-white/10 uppercase tracking-widest hidden md:block">

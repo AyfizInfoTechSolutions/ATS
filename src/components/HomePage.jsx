@@ -283,17 +283,21 @@ const HomePage = () => {
           <div className="space-y-4">
             {[
               {
-                q: "What services do you offer for international trade?",
-                a: "We provide comprehensive solutions, including import-export documentation, customs clearance, freight forwarding, and end-to-end logistics support.",
+                q: "What primary sectors does Ayfiz operate in?",
+                a:
+                  "Ayfiz operates across global trade, logistics, and supply chain management. We deliver end-to-end trade solutions across the UAE, KSA, India, and the UK, combining sourcing, compliance, and execution into one integrated system.",
               },
               {
-                q: "How do you ensure timely delivery of shipments?",
-                a: "Through our global network of logistics partners and real-time tracking systems that monitor every stage of transit.",
+                q: "How do you ensure global shipping compliance?",
+                a:
+                  "We ensure compliance through strict documentation control, accurate tariff classification, and alignment with international regulations across every trade lane we operate in. Our team manages every requirement proactively, reducing delays and ensuring smooth customs clearance.",
               },
               {
-                q: "What industries do you specialize in serving?",
-                a: "We specialize in Industrial Materials (Bitumen, Minerals) and Agricultural Produce (Fresh Fruits & Vegetables).",
+                q: "Can I track my cargo through the Ayfiz portal?",
+                a:
+                  "Yes. Our clients have access to the Ayfiz Trade Portal, where they can track shipments in real time, monitor documentation status, and stay updated at every stage of the process.",
               },
+
             ].map((faq, i) => (
               <div
                 key={i}

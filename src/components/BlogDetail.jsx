@@ -240,15 +240,15 @@ const BlogDetail = () => {
                 </div>
                 <span className="absolute -bottom-8 -right-4 text-[120px] font-black text-brand-dark/5 select-none">ATS</span>
               </motion.blockquote>
+              <Link to="/contact">
+                <h2 className="text-3xl font-bold hover:italic hover:underline text-brand-dark uppercase tracking-tighter mb-8 hover:text-brand-primary">
+                  Connecting You to Global Trade
+                </h2>
 
-              <h2 className="text-3xl font-bold text-brand-dark uppercase tracking-tighter mb-8">
-                Navigating the Global Market
-              </h2>
-
-              <p>
-                Curabitur ut sem vitae mauris hendrerit interdum...
-              </p>
-
+                <p>
+                  Reach out to discuss your requirements, explore opportunities, or get expert guidance across international markets.
+                </p>
+              </Link>
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}

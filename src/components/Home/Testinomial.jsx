@@ -9,21 +9,21 @@ const Testimonials = () => {
 
   const feedback = [
     {
-      name: "Mostfa Kalarod",
+      name: "Khalid Jamal",
       company: "ERD Improvers, Tanzania",
-      text: "Mychus Interfurn has been instrumental in our global expansion. Their expert consultancy and efficient trade solutions streamlined our import/export processes.",
+      text: "Ayfiz Trade Services brought structure and clarity to our international operations. From sourcing to final delivery, every stage was handled with precision and consistency.",
       img: user,
     },
     {
       name: "Andreas Hugi",
       company: "Swiss Refines",
-      text: "Working with Mychus Interfurn has been a pleasure. Their knowledge of customs regulations and proactive approach have saved us time and money.",
+      text: "Ayfiz brought structure and reliability to our international operations. Their execution and compliance handling made a clear impact.",
       img: user,
     },
     {
       name: "Zayd bin Malik",
       company: "Gulf Logistics",
-      text: "Their precision in handling documentation for the UAE market is unmatched. A true partner in modern trade.",
+      text: "Accurate documentation, clear communication, and consistent delivery. A dependable partner for UAE trade operations.",
       img: user,
     },
   ];
@@ -76,8 +76,8 @@ const Testimonials = () => {
               </span>
             </div>
             <h2 className="text-6xl [@media(max-width:768px)]:text-4xl font-bold uppercase tracking-tighter leading-[0.8] text-brand-dark">
-              VOICES OF <br /> 
-              <span className="text-brand-primary italic">CONVICTION.</span>
+             CLIENT<br /> 
+              <span className="text-brand-primary italic">PERSPECTIVES.</span>
             </h2>
           </div>
 

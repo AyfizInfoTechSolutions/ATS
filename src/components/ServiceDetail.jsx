@@ -88,10 +88,10 @@ const ServiceDetail = ({ service, onBack }) => {
             <motion.button
               whileHover={{ y: -4 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => navigate("/contact")}
+            
               className="bg-brand-dark text-white px-10 py-5 text-xs font-black uppercase tracking-[0.2em] transition-all"
             >
-              Request Deployment
+             Download PDF
             </motion.button>
             <motion.button
               whileHover={{ y: -4 }}

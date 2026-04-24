@@ -162,11 +162,15 @@ const HeroLanding = () => {
         >
            {[1, 2, 3, 4, 5].map(i => (
              <div key={i} className="flex items-center gap-10">
-                <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.5em]">Dubai Integrated Logi-Hub</span>
+                <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.5em]">End to End supply chains</span>
                 <div className="w-1.5 h-1.5 bg-brand-accent rotate-45" />
-                <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.5em]">Swiss Financial Corridor</span>
+                <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.5em]">Cross-Border trade</span>
                 <div className="w-1.5 h-1.5 bg-brand-accent rotate-45" />
-                <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.5em]">Mumbai Tech Node</span>
+                <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.5em]">High-Performance logistics</span>
+                <div className="w-1.5 h-1.5 bg-brand-accent rotate-45" />
+                <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.5em]">Real-Time Inventory</span>
+                <div className="w-1.5 h-1.5 bg-brand-accent rotate-45" />
+                <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.5em]">Strategic Global Sourcing</span>
                 <div className="w-1.5 h-1.5 bg-brand-accent rotate-45" />
              </div>
            ))}

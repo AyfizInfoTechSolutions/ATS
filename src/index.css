@@ -13,3 +13,6 @@
   /* Optional: Light variant for backgrounds */
   --color-brand-soft: #f4f9ff;
 }
+a, button, [role="link"] {
+  cursor: pointer;
+}

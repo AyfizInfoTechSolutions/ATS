@@ -5,7 +5,7 @@ import trade from "../assets/fly.png"
 const AboutPage = () => {
   return (
     <main className="bg-white min-h-screen text-brand-dark font-sans antialiased pt-20 overflow-x-hidden">
-      <PageBanner title="AYFIZ" path="Home" />
+      <PageBanner title="AYFIZ TRADE" path="Home" />
 
       {/* SECTION 1: EDITORIAL HEADER */}
       <section className="border-b border-gray-200">
@@ -33,7 +33,7 @@ const AboutPage = () => {
             </motion.h1>
 
             <p className="text-xl text-gray-500 font-medium max-w-2xl border-l-4 border-brand-accent pl-8 leading-relaxed">
-              Smart sourcing. Efficient logistics. Scalable solutions designed and delivered streamlined trade services that help businesses move faster, operate smarter, and scale without barriers.From documentation to delivery, every step is built with precision, transparency, and control.
+              Smart sourcing. Efficient logistics. Scalable solutions designed and delivered streamlined trade services that help businesses move faster, operate smarter, and scale without barriers. From documentation to delivery, every step is built with precision, transparency, and control.
             </p>
           </div>
           <div className="flex flex-col items-start md:items-end">
@@ -57,7 +57,7 @@ const AboutPage = () => {
                 <p>
                By integrating deep industrial intelligence with high-fidelity operational strategies, we provide a definitive framework for international trade efficiency.      Our focus is the creation of seamless supply chains. From intelligent sourcing to precise warehousing and distribution.                 </p>
                 <p>
-               we ensure our partners maintain frictionless, real-time access to the world’s most critical markets.  Our commitment is rooted in structural excellence and the relentless pursuit of trade velocity.
+               We ensure our partners maintain frictionless, real-time access to the world’s most critical markets.  Our commitment is rooted in structural excellence and the relentless pursuit of trade velocity.
                 </p>
                 <p>
 

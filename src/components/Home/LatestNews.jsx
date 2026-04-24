@@ -2,6 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import news1 from "../../assets/news1.avif";
+import news2 from "../../assets/news2.avif";
+import news3 from "../../assets/news3.avif";
 
 const LatestNews = () => {
   const posts = [
@@ -11,7 +14,7 @@ const LatestNews = () => {
       author: "Sultan Ahmed",
       title: "Trends Shaping the Import-Export Industry",
       desc: "Explore emerging trends including digitalization and green shipping across Africa.",
-      img: "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?q=80&w=2070&auto=format&fit=crop"
+      img: news1
     },
     {
       id: "02",
@@ -19,7 +22,7 @@ const LatestNews = () => {
       author: "Muhammed Ali",
       title: "Tips for Hassle-Free Shipping",
       desc: "Learn how to navigate customs regulations and documentation for smooth delivery.",
-      img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop"
+      img: news2
     },
     {
       id: "03",
@@ -27,7 +30,7 @@ const LatestNews = () => {
       author: "Zayd bin Malik",
       title: "Why Partnering with Us is Key",
       desc: "Discover how our global network simplifies your international trade operations.",
-      img: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2070&auto=format&fit=crop"
+      img: news3
     },
   ];
   return (

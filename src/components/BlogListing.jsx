@@ -26,6 +26,7 @@ const BlogListing = () => {
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -106,7 +107,56 @@ const BlogListing = () => {
 
     setLoading(false);
   };
+  const formatMonthYear = (dateString) => {
+    return new Date(dateString).toLocaleDateString("en-US", {
+      month: "long",
+      year: "numeric",
+    });
+  };
+  const cleanHtmlContent = (html) => {
+    return html
+      ?.replace(/&nbsp;/g, " ")     // remove &nbsp;
+      ?.replace(/<[^>]+>/g, "")     // remove HTML tags
+      ?.replace(/\s+/g, " ")        // remove extra spaces
+      ?.trim();                     // clean start/end spaces
+  };
+  const filteredPosts = searchTerm
+    ? posts.filter((post) => {
+      const keyword = searchTerm.toLowerCase();
 
+      const categoriesText = Array.isArray(post?.categories)
+        ? post.categories.join(" ").toLowerCase()
+        : post?.categories?.toLowerCase() || "";
+
+      // Clean HTML from excerpt and content before searching
+      const cleanExcerpt = cleanHtmlContent(post?.excerpt)?.toLowerCase() || "";
+      const cleanContent = cleanHtmlContent(post?.content)?.toLowerCase() || "";
+
+      return (
+        post?.title?.toLowerCase().includes(keyword) ||
+        cleanExcerpt.includes(keyword) ||
+        cleanContent.includes(keyword) ||
+        categoriesText.includes(keyword)
+      );
+    })
+    : posts;
+
+  const POSTS_PER_PAGE = 3; // adjust as needed
+
+  // Reset to page 1 when search changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
+
+  // Paginate the filtered results
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  const paginatedPosts = filteredPosts.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE
+  );
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
   return (
     <div className="bg-white min-h-screen font-sans antialiased text-brand-dark pt-20">
       <PageBanner title="BLOG" path="Home" />
@@ -170,18 +220,18 @@ const BlogListing = () => {
           <div className="lg:col-span-8 border-r border-gray-200">
             {loadingPosts ? (
               <p className="p-10">Loading blogs...</p>
-            ) : posts.length === 0 ? (
-              <p className="p-10">No blogs found</p>
-            ) : posts.map((post, index) => (
+            ) : filteredPosts.length === 0 ? (
+              <p className="p-10">No matching blogs found</p>
+            ) : paginatedPosts.map((post, index) => (
               <motion.article
-                key={post.id}
+                key={post.slug || post.post_id}
                 custom={index}
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
                 whileHover={{ y: -4 }}
-                className={`group flex flex-col md:flex-row ${index !== posts.length - 1 ? 'border-b border-gray-200' : ''}`}
+                className={`group flex flex-col md:flex-row ${index !== paginatedPosts.length - 1 ? 'border-b border-gray-200' : ''}`}
               >
                 <div className="md:w-1/2 overflow-hidden relative">
                   <Link to={`/blog/${post.slug}`}>
@@ -198,7 +248,7 @@ const BlogListing = () => {
 
                 <div className="md:w-1/2 p-10 flex flex-col justify-center bg-white group-hover:bg-brand-soft transition-colors duration-300">
                   <div className="flex items-center gap-4 text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">
-                    <span>{post.publish_date}</span>
+                    <span>{formatMonthYear(post.publish_date)}</span>
                     <span className="h-px w-8 bg-gray-200" />
                     <span>By {post.author || "Ayfiz Team"}</span>
                   </div>
@@ -210,7 +260,7 @@ const BlogListing = () => {
                   </Link>
 
                   <p className="text-gray-500 mb-8 line-clamp-3">
-                    {post.excerpt}
+                    {post.excerpt || cleanHtmlContent(post.content)?.substring(0, 110) + '...'}
                   </p>
 
                   <Link
@@ -240,6 +290,8 @@ const BlogListing = () => {
                   <input
                     type="text"
                     placeholder="Keywords..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                     className="w-full bg-transparent text-xl font-bold outline-none placeholder:text-gray-300"
                   />
                   <Search size={24} className="text-brand-dark" />
@@ -310,18 +362,25 @@ const BlogListing = () => {
           className="mt-12 flex justify-between items-center border-t border-gray-200 pt-8"
         >
           <div className="text-xs font-black uppercase tracking-widest text-gray-400">
-            Page {currentPage} of 10
+            Page {currentPage} of {totalPages}
           </div>
           <div className="flex gap-2">
-            <button className="w-12 h-12 border border-gray-200 flex items-center justify-center hover:border-brand-primary transition-all">
+            <button
+              onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
+              disabled={currentPage === 1}
+              className="w-12 h-12 border border-gray-200 flex items-center justify-center hover:border-brand-primary transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            >
               <ChevronLeft size={20} />
             </button>
-            <button className="px-6 h-12 border border-gray-200 flex items-center justify-center hover:border-brand-primary transition-all font-black uppercase text-xs tracking-widest">
+            <button
+              onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
+              disabled={currentPage === totalPages}
+              className="px-6 h-12 border border-gray-200 flex items-center justify-center hover:border-brand-primary transition-all font-black uppercase text-xs tracking-widest disabled:opacity-30 disabled:cursor-not-allowed"
+            >
               Next
             </button>
           </div>
         </motion.div>
-
       </main>
     </div>
   );

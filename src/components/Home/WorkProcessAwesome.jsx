@@ -18,7 +18,7 @@ const WorkProcessAwesome = () => {
     },
     {
       id: "03",
-      title: "Implementation",
+      title: "Implementation and Outcome",
       desc: "We execute with disciplined resource allocation and continuous performance monitoring to ensure consistent results.",
       tag: "// Execution"
     },

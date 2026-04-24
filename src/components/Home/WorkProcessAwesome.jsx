@@ -115,7 +115,7 @@ const WorkProcessAwesome = () => {
               </div>
 
             
-              <div className="overflow-hidden mb-6 min-h-[40px]"> {/* Added min-height */}
+              <div className="overflow-hidden mb-6 min-h-[40px]"> 
                 <motion.h4
                   initial={{ y: "100%" }} // Use percentage for cleaner reveals
                   whileInView={{ y: 0 }}

@@ -284,7 +284,7 @@ const ProductsPage = () => {
                 </div>
 
                 <div className="absolute top-6 right-6 bg-brand-primary text-white text-[9px] font-black px-3 py-1 rounded-full">
-                  NODE_{idx + 1}
+                  ITEM_{idx + 1}
                 </div>
               </motion.div>
             ))}

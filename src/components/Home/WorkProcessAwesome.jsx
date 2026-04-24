@@ -115,16 +115,22 @@ const WorkProcessAwesome = () => {
               </div>
 
               {/* TITLE - Slide up effect */}
-              <div className="overflow-hidden mb-6">
-                <motion.h4 
-                  whileInView={{ y: 0 }}
-                  initial={{ y: 50 }}
-                  transition={{ delay: idx * 0.3, duration: 0.5 }}
-                  className="text-3xl font-bold uppercase tracking-tighter group-hover:text-brand-primary transition-colors"
-                >
-                  {step.title}
-                </motion.h4>
-              </div>
+             {/* TITLE - Slide up effect */}
+<div className="overflow-hidden mb-6 min-h-[40px]"> {/* Added min-height */}
+  <motion.h4 
+    initial={{ y: "100%" }} // Use percentage for cleaner reveals
+    whileInView={{ y: 0 }}
+    viewport={{ once: true, margin: "-50px" }} // Triggers slightly earlier
+    transition={{ 
+      delay: idx * 0.2, 
+      duration: 0.6, 
+      ease: "easeOut" 
+    }}
+    className="text-3xl font-bold uppercase tracking-tighter text-slate-400 group-hover:text-brand-primary transition-colors"
+  >
+    {step.title}
+  </motion.h4>
+</div>
               
               <p className="text-slate-400 text-sm leading-relaxed font-medium mb-12 opacity-80 group-hover:opacity-100 transition-opacity">
                 {step.desc}

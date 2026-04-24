@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import user from "../../assets/user.png";
+import testi1 from "../../assets/testi1.png";
+import testi2 from "../../assets/testi2.png";
+import testi3 from "../../assets/testi3.png";
 
 const Testimonials = () => {
   const [index, setIndex] = useState(0);
@@ -9,22 +11,22 @@ const Testimonials = () => {
 
   const feedback = [
     {
-      name: "Khalid Jamal",
+      name: "Susan Mwangi",
       company: "ERD Improvers, Tanzania",
       text: "Ayfiz Trade Services brought structure and clarity to our international operations. From sourcing to final delivery, every stage was handled with precision and consistency.",
-      img: user,
+      img: testi1,
     },
     {
       name: "Andreas Hugi",
       company: "Swiss Refines",
       text: "Ayfiz brought structure and reliability to our international operations. Their execution and compliance handling made a clear impact.",
-      img: user,
+      img: testi2,
     },
     {
       name: "Zayd bin Malik",
       company: "Gulf Logistics",
       text: "Accurate documentation, clear communication, and consistent delivery. A dependable partner for UAE trade operations.",
-      img: user,
+      img: testi3,
     },
   ];
 

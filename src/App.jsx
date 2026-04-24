@@ -42,7 +42,10 @@ function App() {
     }, 2800); // Matches the progress bar speed
     return () => clearTimeout(timer);
   }, []);
-
+const BlogDetailWrapper = () => {
+  const { slug } = useParams();
+  return <BlogDetail key={slug} />;
+};
   return (
     <BrowserRouter>
       <ScrollReset />
@@ -65,7 +68,7 @@ function App() {
 
                 {/* Blog Routes */}
                 <Route path="/blog" element={<BlogListing />} />
-                <Route path="/blog/:slug" element={<BlogDetail />} />
+                <Route path="/blog/:slug" element={<BlogDetailWrapper />} />
                 <Route path="/terms" element={<Terms />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/faqs" element={<Faqs />} />

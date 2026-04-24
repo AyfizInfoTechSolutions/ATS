@@ -27,7 +27,6 @@ const socialmedia = [{
 }]
 
 const BlogDetail = () => {
-  const { id } = useParams();
   const { slug } = useParams();
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -37,42 +36,42 @@ const BlogDetail = () => {
   const [allBlogs, setAllBlogs] = useState([]); // for sidebar
 
   useEffect(() => {
-    const fetchData = async () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [slug])
+
+  // Fetch allBlogs only ONCE on mount
+  useEffect(() => {
+    const fetchAllBlogs = async () => {
       try {
-        // 🔹 Single blog by slug
-        const res1 = await fetch(
-          `${import.meta.env.VITE_API_BASE_URL}/ayfiz-trade/blogs/${slug}`
-        );
-        const data1 = await res1.json();
-
-        console.log("DETAIL API:", data1);
-
-        if (res1.ok) {
-          setPost(data1.blog || data1); // adjust if needed
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/ayfiz-trade/blogs`);
+        const data = await res.json();
+        if (res.ok) {
+          setAllBlogs(Array.isArray(data.blogs) ? data.blogs : []);
         }
-
-        // 🔹 All blogs (for related list)
-        const res2 = await fetch(
-          `${import.meta.env.VITE_API_BASE_URL}/ayfiz-trade/blogs`
-        );
-        const data2 = await res2.json();
-
-        console.log("LIST API:", data2);
-
-        if (res2.ok) {
-          setAllBlogs(Array.isArray(data2.blogs) ? data2.blogs : []);
-        }
-
       } catch (error) {
         console.error(error);
-      } finally {
-        setLoadingPosts(false);
       }
     };
+    fetchAllBlogs();
+  }, []); // ← empty dep array, runs once
 
-    fetchData();
+  // Fetch single post on slug change
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        setPost(null);
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/ayfiz-trade/blogs/${slug}`);
+        const data = await res.json();
+        if (res.ok) {
+          setPost(data.blog || data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchPost();
   }, [slug]);
-  
+
   const handleSubscribe = async () => {
     if (!email) {
       setMessage("Please enter your email.");
@@ -261,21 +260,21 @@ const BlogDetail = () => {
                 </h4>
 
                 <ul className="text-sm italic space-y-4 font-medium">
-                  {(allBlogs.length > 0
+                  {(post
                     ? (
-                      // 👉 First try: same category
-                      allBlogs.filter(item =>
-                        item.slug !== slug &&
-                        item.categories?.[0] === post?.categories?.[0]
-                      ).length > 0
-
-                        ? allBlogs.filter(item =>
+                      (() => {
+                        const filtered = allBlogs.filter(item =>
                           item.slug !== slug &&
                           item.categories?.[0] === post?.categories?.[0]
-                        )
+                        );
 
-                        // 👉 Fallback: show any other blogs
-                        : allBlogs.filter(item => item.slug !== slug)
+                        const final =
+                          filtered.length > 0
+                            ? filtered
+                            : allBlogs.filter(item => item.slug !== slug);
+
+                        return final;
+                      })()
                     )
                     : []
                   )

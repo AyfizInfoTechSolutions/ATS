@@ -189,7 +189,7 @@ const ProductsPage = () => {
 
   return (
     <main className="bg-white min-h-screen pt-24 overflow-x-hidden relative">
-      <PageBanner title="TRADE PORTFOLIO" path="Home" />
+      <PageBanner title="TRADE RANGE" path="Home" />
 
       {/* --- INDUSTRIAL HEADER (Matches Site Identity) --- */}
       <section className="max-w-8xl px-16 [@media(max-width:768px)]:px-4  mx-auto border-x border-gray-100">
